@@ -1,0 +1,3 @@
+GameState.prototype.update = function() {
+
+};
