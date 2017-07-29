@@ -5,27 +5,42 @@ GameState.prototype.update = function() {
     this.game.state.start('game');
   }
 
-  if (this.game.input.activePointer.isDown) {
-    // engine
-    //g_game.player.frame = 1;
+  // determine state
+  if (this.game.input.activePointer.isDown && g_game.player.customProps.state == 'travelNoGrapple') {
+    // deploy grapple
+    g_game.player.customProps.state = 'travelGrapple';
+    g_game.player.customProps.grappleLength = 1;
+    g_game.player.grappleAngle = this.game.physics.arcade.angleToPointer(g_game.player);
+
   }
-  else {
-    // no engine
-    //g_game.player.frame = 0;
+  else if (!this.game.input.activePointer.isDown && g_game.player.customProps.state == 'travelGrapple') {
+    // cancel grapple
+    g_game.player.customProps.state = 'travelNoGrapple';
   }
+  else if (!this.game.input.activePointer.isDown && g_game.player.customProps.state == 'enteringOrbit') {
+    // no longer entering orbit
+    g_game.player.customProps.state = 'orbitting';
+  }
+  else if (!this.game.input.activePointer.isDown && g_game.player.customProps.state == 'detaching') {
+    // ready to deploy grapple
+    g_game.player.customProps.state = 'travelNoGrapple';
+  }
+
+  console.log(g_game.player.customProps.state);
 
   g_game.asteroid.rotation += 0.005;
 
   g_game.drawingSurface.clear();
 
-  if (this.game.input.activePointer.isDown && g_game.player.customProps.orbitPlanet) {
+  if (this.game.input.activePointer.isDown && g_game.player.customProps.state == 'orbitting') {
     // launch off planet
     g_game.player.customProps.velocityX = 2 * Math.cos(g_game.player.rotation);
     g_game.player.customProps.velocityY = 2 * Math.sin(g_game.player.rotation);
 
     g_game.player.customProps.orbitPlanet = null;
+    g_game.player.customProps.state = 'detaching';
   }
-  else if (g_game.player.customProps.orbitPlanet) {
+  else if (g_game.player.customProps.state == 'orbitting' || g_game.player.customProps.state == 'enteringOrbit') {
     // orbitting
 
     var da = 1 / g_game.player.customProps.grappleLength;
@@ -55,28 +70,17 @@ GameState.prototype.update = function() {
       killPlayer();
     }
 
-    if (this.game.input.activePointer.isDown) {
-      if (g_game.player.customProps.grappleLength) {
-        g_game.player.customProps.grappleLength += 4;
-        // draw rope
-        g_game.drawingSurface.lineStyle(2, 0xffffff, 1);
-        g_game.drawingSurface.moveTo(g_game.player.x, g_game.player.y);
-        g_game.drawingSurface.lineTo(
-          g_game.player.x + g_game.player.customProps.grappleLength * Math.cos(g_game.player.grappleAngle),
-          g_game.player.y + g_game.player.customProps.grappleLength * Math.sin(g_game.player.grappleAngle)
-        );
-      }
-      else {
-        g_game.player.grappleAngle = this.game.physics.arcade.angleToPointer(g_game.player);
-        g_game.player.customProps.grappleLength = 1;
-      }
-    }
-    else {
+    if (g_game.player.customProps.state == 'travelGrapple') {
       var grappleLoc = {};
       grappleLoc.x = g_game.player.x + g_game.player.customProps.grappleLength * Math.cos(g_game.player.grappleAngle);
       grappleLoc.y = g_game.player.y + g_game.player.customProps.grappleLength * Math.sin(g_game.player.grappleAngle);
 
+      // draw rope
+      g_game.drawingSurface.lineStyle(2, 0xffffff, 1);
+      g_game.drawingSurface.moveTo(g_game.player.x, g_game.player.y);
+      g_game.drawingSurface.lineTo(grappleLoc.x, grappleLoc.y);
 
+      // check collision
       if (distanceBetween(grappleLoc, g_game.planet1) < g_game.planet1.width) {
         enterOrbit(g_game.player, g_game.planet1);
       }
@@ -86,19 +90,9 @@ GameState.prototype.update = function() {
       else if (distanceBetween(grappleLoc, g_game.planet3) < g_game.planet3.width) {
         enterOrbit(g_game.player, g_game.planet3);
       }
-      else {
-        g_game.player.customProps.grappleLength = 0;
-      }
+
+      g_game.player.customProps.grappleLength += 4;
     }
-    /*else if (distanceBetween(g_game.player, g_game.planet1) < g_game.planet1.customProps.orbitDiameter) {
-      enterOrbit(g_game.player, g_game.planet1);
-    }
-    else if (distanceBetween(g_game.player, g_game.planet2) < g_game.planet2.customProps.orbitDiameter) {
-      enterOrbit(g_game.player, g_game.planet2);
-    }
-    else if (distanceBetween(g_game.player, g_game.planet3) < g_game.planet3.customProps.orbitDiameter) {
-      enterOrbit(g_game.player, g_game.planet3);
-    }*/
   }
 
 };

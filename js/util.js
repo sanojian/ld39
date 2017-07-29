@@ -9,6 +9,8 @@ function enterOrbit(obj, planet) {
 
   obj.customProps.orbitPlanet = planet;
   obj.customProps.orbitAngle = angleToObj;
+  obj.customProps.grappleLength = distanceBetween(obj, planet);
+  obj.customProps.state = 'enteringOrbit';
 }
 
 function killPlayer() {
