@@ -12,6 +12,8 @@ GameState.prototype.update = function() {
     g_game.player.frame = 0;
   }
 
+  g_game.asteroid.rotation += 0.005;
+
   if (this.game.input.activePointer.isDown &&g_game.player.customProps.orbitPlanet) {
     // launch off planet
     g_game.player.customProps.velocityX = (g_game.player.customProps.orbitPlanet.customProps.orbitDiameter/16) * Math.cos(g_game.player.rotation);
@@ -37,11 +39,18 @@ GameState.prototype.update = function() {
     g_game.player.y += g_game.player.customProps.velocityY;
 
     // check if player is near planet
-    if (distanceBetween(g_game.player, g_game.planet1) < g_game.planet1.customProps.orbitDiameter) {
+    // TODO: use a group
+    if (distanceBetween(g_game.player, g_game.asteroid) < g_game.asteroid.width/2) {
+      killPlayer();
+    }
+    else if (distanceBetween(g_game.player, g_game.planet1) < g_game.planet1.customProps.orbitDiameter) {
       enterOrbit(g_game.player, g_game.planet1);
     }
     else if (distanceBetween(g_game.player, g_game.planet2) < g_game.planet2.customProps.orbitDiameter) {
       enterOrbit(g_game.player, g_game.planet2);
+    }
+    else if (distanceBetween(g_game.player, g_game.planet3) < g_game.planet3.customProps.orbitDiameter) {
+      enterOrbit(g_game.player, g_game.planet3);
     }
   }
 };

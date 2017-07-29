@@ -7,6 +7,8 @@ SplashScreen.prototype = {
 
 		this.load.image('planet1', 'assets/gfx/planet1.png');
 		this.load.image('planet2', 'assets/gfx/planet2.png');
+		this.load.image('asteroid', 'assets/gfx/asteroid.png');
+		this.load.image('goal', 'assets/gfx/goal.png');
 
 		this.load.spritesheet('ship1', 'assets/gfx/ship1.png', 16, 9);
 

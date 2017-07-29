@@ -12,7 +12,7 @@ module.exports = function(grunt) {
 					'html/index.html',
 					'assets/**/*.png'
 				],
-				tasks: ['jshint','concat']
+				tasks: ['build']
 			}
 		},
 		jshint: {
