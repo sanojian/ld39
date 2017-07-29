@@ -11,35 +11,26 @@ GameState.prototype.create = function() {
   g_game.planet1.customProps = {
     orbitDiameter : 32
   };
-<<<<<<< HEAD
-  drawOrbit(this.game,g_game.planet1);
-=======
-  drawOrbit(g_game.planet1);
->>>>>>> 79c9e3d209cacec1aba9526dd6c5b247e6c0cbf6
+  drawOrbit(this.game, g_game.planet1);
 
   g_game.planet2 = this.game.add.sprite(200, 300, 'planet2');
   g_game.planet2.anchor.setTo(0.5, 0.5);
   g_game.planet2.customProps = {
     orbitDiameter : 64
   };
-<<<<<<< HEAD
-  drawOrbit(this.game,g_game.planet2);
-=======
-  drawOrbit(g_game.planet2);
+  drawOrbit(this.game, g_game.planet2);
 
   g_game.planet3 = this.game.add.sprite(400, 100, 'planet1');
   g_game.planet3.anchor.setTo(0.5, 0.5);
   g_game.planet3.customProps = {
     orbitDiameter : 32
   };
-  drawOrbit(g_game.planet3);
+  drawOrbit(this.game, g_game.planet3);
   this.game.add.sprite(g_game.planet3.x - 4, g_game.planet3.y - 10, 'goal');
 
   g_game.asteroid = this.game.add.sprite(200, 100, 'asteroid');
   g_game.asteroid.scale.setTo(2);
   g_game.asteroid.anchor.setTo(0.5, 0.5);
-
->>>>>>> 79c9e3d209cacec1aba9526dd6c5b247e6c0cbf6
 
   var player = this.game.add.sprite(0, 0, 'ship1');
   player.anchor.setTo(0.5, 0.5);
