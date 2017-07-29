@@ -5,6 +5,11 @@ SplashScreen.prototype = {
 		this.load.image('splashBackground', 'assets/gfx/splashBackground.png');
 		this.load.image('background', 'assets/gfx/background.png');
 
+		this.load.image('planet1', 'assets/gfx/planet1.png');
+		this.load.image('planet2', 'assets/gfx/planet2.png');
+
+		this.load.spritesheet('ship1', 'assets/gfx/ship1.png', 16, 9);
+
 	},
 	create: function() {
     g_game.spaceKey = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
