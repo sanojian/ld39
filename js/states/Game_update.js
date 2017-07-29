@@ -1,17 +1,28 @@
 GameState.prototype.update = function() {
 
 
+  if (!g_game.player.alive) {
+    this.game.state.start('game');
+  }
+
+  if (this.game.input.activePointer.isDown) {
+    g_game.player.frame = 1;
+  }
+  else {
+    g_game.player.frame = 0;
+  }
+
   if (this.game.input.activePointer.isDown &&g_game.player.customProps.orbitPlanet) {
     // launch off planet
-    g_game.player.customProps.velocityX = (g_game.player.customProps.orbitPlanet.customProps.orbitDiameter/8) * Math.cos(g_game.player.rotation);
-    g_game.player.customProps.velocityY = (g_game.player.customProps.orbitPlanet.customProps.orbitDiameter/8) * Math.sin(g_game.player.rotation);
+    g_game.player.customProps.velocityX = (g_game.player.customProps.orbitPlanet.customProps.orbitDiameter/16) * Math.cos(g_game.player.rotation);
+    g_game.player.customProps.velocityY = (g_game.player.customProps.orbitPlanet.customProps.orbitDiameter/16) * Math.sin(g_game.player.rotation);
 
     g_game.player.customProps.orbitPlanet = null;
   }
   else if (g_game.player.customProps.orbitPlanet) {
     // orbitting
 
-    g_game.player.customProps.orbitAngle += 0.1;
+    g_game.player.customProps.orbitAngle += 0.05;
 
     g_game.player.rotation = g_game.player.customProps.orbitAngle + Math.PI/2;
 
