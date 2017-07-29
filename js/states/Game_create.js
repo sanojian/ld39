@@ -1,56 +1,59 @@
-var GameState = function(game) {
-};
+var GameState = function(game) {};
 
 
 GameState.prototype.create = function() {
 
-  this.game.physics.startSystem(Phaser.Physics.ARCADE);
+    this.game.physics.startSystem(Phaser.Physics.ARCADE);
 
-  this.game.add.image(0, 0, 'background');
+    this.game.add.image(0, 0, 'background');
 
-  g_game.planet1 = this.game.add.sprite(g_game.levels[g_game.currentlvl].planet1.x,g_game.levels[g_game.currentlvl].planet1.y, g_game.levels[g_game.currentlvl].planet1.key);
-  g_game.planet1.anchor.setTo(0.5, 0.5);
-  g_game.planet1.customProps = {
-    orbitDiameter : 32
-  };
-  drawOrbit(this.game, g_game.planet1);
+    setupLevel(this.game);
 
-  g_game.planet2 = this.game.add.sprite(g_game.levels[g_game.currentlvl].planet2.x,g_game.levels[g_game.currentlvl].planet2.y, g_game.levels[g_game.currentlvl].planet2.key);
-  g_game.planet2.anchor.setTo(0.5, 0.5);
-  g_game.planet2.customProps = {
-    orbitDiameter : 64
-  };
-  drawOrbit(this.game, g_game.planet2);
+    // graphics drawing surface
+    g_game.drawingSurface = this.game.add.graphics(0, 0);
 
-  g_game.planet3 = this.game.add.sprite(g_game.levels[g_game.currentlvl].planet3.x,g_game.levels[g_game.currentlvl].planet3.y, g_game.levels[g_game.currentlvl].planet3.key);
-  g_game.planet3.anchor.setTo(0.5, 0.5);
-  g_game.planet3.customProps = {
-    orbitDiameter : 32
-  };
-  drawOrbit(this.game, g_game.planet3);
-  this.game.add.sprite(g_game.planet3.x - 4, g_game.planet3.y - 10, 'goal');
+    var player = this.game.add.sprite(g_game.planets[0].x, g_game.planets[0].y - 32, 'ship1');
+    player.anchor.setTo(0.5, 0.5);
+    player.customProps = {
+        orbitAngle: 0,
+        orbitPlanet: g_game.planets[0],
+        grappleLength: 32
+    };
+    player.checkWorldBounds = true;
+    player.events.onOutOfBounds.add(killPlayer, this);
 
-  g_game.asteroid = this.game.add.sprite(200, 100, 'asteroid');
-  g_game.asteroid.scale.setTo(2);
-  g_game.asteroid.anchor.setTo(0.5, 0.5);
-
-  // graphics drawing surface
-  g_game.drawingSurface = this.game.add.graphics(0, 0);
-
-  var player = this.game.add.sprite(g_game.planet1.x, g_game.planet1.y - 32, 'ship1');
-  player.anchor.setTo(0.5, 0.5);
-  player.customProps = {
-    orbitAngle: 0,
-    orbitPlanet: g_game.planet1,
-    grappleLength: 32
-  };
-  player.checkWorldBounds = true;
-  player.events.onOutOfBounds.add( killPlayer, this );
-
-  g_game.player = player;
-  enterOrbit(g_game.player, g_game.planet1);
+    g_game.player = player;
+    enterOrbit(g_game.player, g_game.planets[0]);
 
 
 
-  console.log('game started');
+    console.log('game started');
 };
+
+function setupLevel(game) {
+
+    for (var i in g_game.levels) {
+        if (g_game.levels.hasOwnProperty(i)) {
+            //planets
+            if (g_game.levels[g_game.currentlvl]['planet' + i]) {
+                var planetDef = g_game.levels[g_game.currentlvl]['planet' + i];
+                var planet = game.add.sprite(planetDef.x, planetDef.y, planetDef.key);
+                planet.anchor.setTo(0.5, 0.5);
+                planet.scale.setTo(planetDef.scale);
+                g_game.planets.push(planet);
+            }
+            //asteroids         
+            if (g_game.levels[g_game.currentlvl]['asteroid' + i]) {
+                var asteroidDef = g_game.levels[g_game.currentlvl]['asteroid' + i];
+                var asteroid = game.add.sprite(asteroidDef.x, asteroidDef.y, asteroidDef.key);
+                asteroid.anchor.setTo(0.5, 0.5);
+                asteroid.scale.setTo(asteroidDef.scale);
+                g_game.asteroids.push(asteroid);
+            }
+
+
+        }
+    }
+
+
+}
