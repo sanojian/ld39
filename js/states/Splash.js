@@ -24,6 +24,7 @@ SplashScreen.prototype = {
 
 				this.game.load.audio('engine', ['assets/audio/sfx/engine.wav']);
 				this.game.load.audio('grappleExtend', ['assets/audio/sfx/grappleExtend.wav']);
+				this.game.load.audio('grapple', ['assets/audio/sfx/grapple.wav']);
 
         this.load.bitmapFont('font', 'assets/gfx/font.png', 'assets/gfx/font.xml');
 

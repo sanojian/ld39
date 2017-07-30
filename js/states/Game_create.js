@@ -23,10 +23,11 @@ GameState.prototype.create = function() {
     player.events.onOutOfBounds.add(killPlayer, this);
 
     g_game.player = player;
-    enterOrbit(this.game,g_game.player, g_game.planets[0]);
+    enterOrbit(this.game,g_game.player, g_game.planets[0], true);
 
     initAudio('engine', this.game, 0.2, true);
     initAudio('grappleExtend', this.game, 0.6, false);
+    initAudio('grapple', this.game, 0.6, false);
 
     var fuelBarbg = this.game.add.sprite(0, 0, 'fuel_bg');
     var fuelBar = this.game.add.sprite(34, 0, 'fuel');

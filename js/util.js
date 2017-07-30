@@ -3,7 +3,7 @@ function distanceBetween(obj1, obj2) {
     return Math.sqrt(Math.pow(obj1.x - obj2.x, 2) + Math.pow(obj1.y - obj2.y, 2));
 }
 
-function enterOrbit(game, obj, planet) {
+function enterOrbit(game, obj, planet, skipSound) {
 
     var angleToObj = Math.atan2(obj.y - planet.y, obj.x - planet.x);
 
@@ -11,6 +11,10 @@ function enterOrbit(game, obj, planet) {
     obj.customProps.orbitAngle = angleToObj;
     obj.customProps.grappleLength = distanceBetween(obj, planet);
     obj.customProps.state = 'enteringOrbit';
+
+    if (!skipSound) {
+      g_game.sfx.grapple.play();
+    }
 
     for (var i = 0; i < g_game.planets.length; i++) {
         if (g_game.planets[i] == planet && g_game.planets[i].isGoal) {
