@@ -41,6 +41,7 @@ function setupLevel(game) {
                 var planet = game.add.sprite(planetDef.x, planetDef.y, planetDef.key);
                 planet.anchor.setTo(0.5, 0.5);
                 planet.scale.setTo(planetDef.scale);
+                planet.isGoal = planetDef.isGoal;
                 g_game.planets.push(planet);
             }
             //asteroids         

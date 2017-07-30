@@ -11,6 +11,12 @@ function enterOrbit(obj, planet) {
   obj.customProps.orbitAngle = angleToObj;
   obj.customProps.grappleLength = distanceBetween(obj, planet);
   obj.customProps.state = 'enteringOrbit';
+
+ for(var i = 0; i < g_game.planets.length; i++){
+   if(g_game.planets[i] == planet && g_game.planets[i].isGoal){
+    console.log('THE PRINCESS IS ON ANOTHER PLANET');
+}
+}
 }
 
 function killPlayer() {
