@@ -1,5 +1,6 @@
 GameState.prototype.update = function() {
 
+    var i;
 
     if (!g_game.player.alive) {
         this.game.state.start('game');
@@ -23,7 +24,7 @@ GameState.prototype.update = function() {
         g_game.player.customProps.state = 'travelNoGrapple';
     }
 
-    for (var i = 0; i < g_game.asteroids.length; i++) {
+    for (i = 0; i < g_game.asteroids.length; i++) {
         g_game.asteroids[i].rotation += 0.005;
     }
 
@@ -39,10 +40,10 @@ GameState.prototype.update = function() {
     } else if (g_game.player.customProps.state == 'orbitting' || g_game.player.customProps.state == 'enteringOrbit') {
         // orbitting
 
-        var da = 1 / g_game.player.customProps.grappleLength;
+        var da = 2 * (g_game.player.customProps.orbitDirection || 1) / g_game.player.customProps.grappleLength;
         g_game.player.customProps.orbitAngle += da;
 
-        g_game.player.rotation = g_game.player.customProps.orbitAngle + Math.PI / 2;
+        g_game.player.rotation = g_game.player.customProps.orbitAngle + (g_game.player.customProps.orbitDirection || 1) * Math.PI / 2;
 
         var planet = g_game.player.customProps.orbitPlanet;
         g_game.player.x = planet.x + g_game.player.customProps.grappleLength * Math.cos(g_game.player.customProps.orbitAngle);
@@ -61,7 +62,7 @@ GameState.prototype.update = function() {
 
         // check if player is near planet
 
-        for (var i = 0; i < g_game.asteroids.length; i++) {
+        for (i = 0; i < g_game.asteroids.length; i++) {
             if (distanceBetween(g_game.player, g_game.asteroids[i]) < g_game.asteroids[i].width / 2) {
                 killPlayer();
             }
@@ -78,9 +79,38 @@ GameState.prototype.update = function() {
             g_game.drawingSurface.lineTo(grappleLoc.x, grappleLoc.y);
 
             // check collision
-            for (var i = 0; i < g_game.planets.length; i++) {
+            for (i = 0; i < g_game.planets.length; i++) {
                 if (distanceBetween(grappleLoc, g_game.planets[i]) < g_game.planets[i].width) {
                     enterOrbit(g_game.player, g_game.planets[i]);
+                    var angleShip = normalizeAngle(g_game.player.rotation);
+                    var angleToPlanet = Math.atan2(g_game.player.y - g_game.planets[i].y, g_game.player.x - g_game.planets[i].x);
+                    angleToPlanet = normalizeAngle(angleToPlanet);
+                    console.log(angleShip);
+                    console.log(angleToPlanet);
+                    var diffAngle = angleToPlanet - angleShip;
+
+                    g_game.player.customProps.orbitDirection = -1;
+                    if (angleToPlanet > 3* Math.PI/2) {
+                      if (diffAngle > 1) {
+                        g_game.player.customProps.orbitDirection = 1;
+                      }
+                    }
+                    else if (angleToPlanet > Math.PI) {
+                      if (diffAngle < 1) {
+                        g_game.player.customProps.orbitDirection = 1;
+                      }
+                    }
+                    else if (angleToPlanet > Math.PI/2) {
+                      if (diffAngle < 1) {
+                        g_game.player.customProps.orbitDirection = 1;
+                      }
+                    }
+                    else {
+                      if (angleShip < Math.PI && diffAngle < 1) {
+                        g_game.player.customProps.orbitDirection = 1;
+                      }
+                    }
+
                 }
 
             }

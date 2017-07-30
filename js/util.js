@@ -19,6 +19,14 @@ function enterOrbit(obj, planet) {
 }
 }
 
+function normalizeAngle(angle) {
+  while (angle < 0) {
+    angle += Math.PI * 2;
+  }
+
+  return angle % (Math.PI * 2);
+}
+
 function killPlayer() {
   g_game.player.kill();
 }
