@@ -14,7 +14,7 @@ function enterOrbit(game, obj, planet) {
 
     for (var i = 0; i < g_game.planets.length; i++) {
         if (g_game.planets[i] == planet && g_game.planets[i].isGoal) {
-            console.log('THE PRINCESS IS ON ANOTHER PLANET');
+           switchLevel(game,g_game.currentlvl+1);
         }
     }
     for (var j = 0; j < g_game.specialAsteroids.length; j++) {
@@ -48,5 +48,14 @@ function outOfOrbit() {
    g_game.asteroidEmitter.y = g_game.specialAsteroid.y;
 
     g_game.asteroidEmitter.start(true,12000,null,25);
+
+}
+
+function switchLevel(game,level){
+g_game.currentlvl = level; 
+g_game.planets = [];
+g_game.asteroids = [];
+g_game.specialAsteroids = [];
+ game.state.start(game.state.current);
 
 }

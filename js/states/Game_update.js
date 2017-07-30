@@ -8,7 +8,7 @@ GameState.prototype.update = function() {
 
 
 
-    //   ghetto level editor
+ //     ghetto level editor
     // if (this.game.input.activePointer.isDown) {
     //     console.log('planet: { x:' + this.game.input.activePointer.x + ', y:' + this.game.input.activePointer.y + ',key: \'planet2\',scale: 1, type: \'planet\'},');
     // }
