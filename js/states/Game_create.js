@@ -73,30 +73,21 @@ function setupLevel(game) {
 function fuelManagement() {
     if (g_game.player.customProps.state == 'travelNoGrapple' && g_game.fuel > 0 || g_game.player.customProps.state == 'travelGrapple' && g_game.fuel > 0) {
         g_game.fuel -= 6;
-
-
     }
 
     if (g_game.player.customProps.state == 'orbitting' && g_game.fuel < g_game.maxFuel) {
-
-        console.log(g_game.fuel);
         g_game.fuel += 10;
 
     }
-
     g_game.fuelBar.width = Math.floor(g_game.fuel / g_game.maxFuel * 128);
-
-
     if (g_game.fuel <= 0 && g_game.player.customProps.state == 'travelNoGrapple' || g_game.fuel <= 0 && g_game.player.customProps.state == 'travelGrapple') {
-    if(g_game.player.customProps.velocityX > 0 && g_game.player.customProps.velocityY > 0){
-g_game.player.customProps.velocityX -= 1;
-        g_game.player.customProps.velocityY -= 1;
-
-} else {
-   g_game.player.customProps.velocityX = 0;
-   g_game.player.customProps.velocityY = 0;
-   killPlayer();
-}
+        if (g_game.player.customProps.velocityX > 0 && g_game.player.customProps.velocityY > 0) {
+            g_game.player.customProps.velocityX -= 1;
+            g_game.player.customProps.velocityY -= 1;
+        } else {
+            g_game.player.customProps.velocityX = 0;
+            g_game.player.customProps.velocityY = 0;
+            killPlayer();
+        }
 
     }
-}

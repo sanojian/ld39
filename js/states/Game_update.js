@@ -35,9 +35,6 @@ GameState.prototype.update = function() {
     for (i = 0; i < g_game.asteroids.length; i++) {
         g_game.asteroids[i].rotation += 0.005;
     }
-
-console.log(g_game.player.customProps.state);
-
     g_game.drawingSurface.clear();
 
     if (this.game.input.activePointer.isDown && g_game.player.customProps.state == 'orbitting') {
