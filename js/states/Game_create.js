@@ -29,10 +29,8 @@ GameState.prototype.create = function() {
     initAudio('grappleExtend', this.game, 0.6, false);
     initAudio('grapple', this.game, 0.6, false);
 
+    var fuelBar = this.game.add.sprite(35, 0, 'fuel');
     var fuelBarbg = this.game.add.sprite(0, 0, 'fuel_bg');
-    var fuelBar = this.game.add.sprite(34, 0, 'fuel');
-    fuelBar.cropEnabled = true;
-    fuelBarbg.addChild(fuelBar);
     var fuel = 100;
     var maxFuel = 100;
     g_game.fuel = fuel;
@@ -91,7 +89,7 @@ function fuelManagement() {
         g_game.fuel += 10;
 
     }
-    g_game.fuelBar.width = Math.floor(g_game.fuel / g_game.maxFuel * 128);
+    g_game.fuelBar.width = Math.floor(g_game.fuel / g_game.maxFuel * 93);
     if (g_game.fuel <= 0 && g_game.player.customProps.state == 'travelNoGrapple' || g_game.fuel <= 0 && g_game.player.customProps.state == 'travelGrapple') {
         if (g_game.player.customProps.velocityX > 0 && g_game.player.customProps.velocityY > 0) {
             g_game.player.customProps.velocityX -= 1;
