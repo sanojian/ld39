@@ -19,7 +19,7 @@ function enterOrbit(game, obj, planet) {
     }
     for (var j = 0; j < g_game.specialAsteroids.length; j++) {
         if (g_game.specialAsteroids[j] == planet) {
-            game.time.events.add(Phaser.Timer.SECOND, outOfOrbit, this);
+            game.time.events.add(Phaser.Timer.SECOND * 2, outOfOrbit, this);
             g_game.specialAsteroid = g_game.specialAsteroids[j];
         }
 

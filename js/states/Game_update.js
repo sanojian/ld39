@@ -9,9 +9,9 @@ GameState.prototype.update = function() {
 
 
  //     ghetto level editor
-    // if (this.game.input.activePointer.isDown) {
-    //     console.log('planet: { x:' + this.game.input.activePointer.x + ', y:' + this.game.input.activePointer.y + ',key: \'planet2\',scale: 1, type: \'planet\'},');
-    // }
+    if (this.game.input.activePointer.isDown) {
+        console.log('planet: { x:' + this.game.input.activePointer.x + ', y:' + this.game.input.activePointer.y + ',key: \'planet2\',scale: 1, type: \'planet\'},');
+    }
 
 
     // determine state
@@ -103,9 +103,6 @@ function makeOrbitable(game,array, grappleLoc) {
     for (i = 0; i < array.length; i++) {
         if (distanceBetween(grappleLoc, array[i]) < array[i].width) {
             enterOrbit(game,g_game.player, array[i]);
-            if (array[i].special) {
-      
-            }
             var angleShip = normalizeAngle(g_game.player.rotation);
             var angleToPlanet = Math.atan2(g_game.player.y - array[i].y, g_game.player.x - array[i].x);
             angleToPlanet = normalizeAngle(angleToPlanet);
