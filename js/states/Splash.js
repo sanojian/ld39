@@ -31,6 +31,9 @@ SplashScreen.prototype = {
         this.load.image('fuel_bg', 'assets/gfx/fuel_bg.png');
         this.load.image('fuel', 'assets/gfx/fuel.png');
 
+        this.load.image('hook', 'assets/gfx/Hook.png');
+
+
         this.game.load.audio('engine', ['assets/audio/sfx/engine.wav']);
         this.game.load.audio('grappleExtend', ['assets/audio/sfx/grappleExtend.wav']);
         this.game.load.audio('grapple', ['assets/audio/sfx/grapple.wav']);

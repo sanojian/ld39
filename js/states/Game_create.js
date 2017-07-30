@@ -31,8 +31,8 @@ GameState.prototype.create = function() {
     initAudio('grappleExtend', this.game, 0.6, false);
     initAudio('grapple', this.game, 0.6, false);
 
-    var fuelBar = this.game.add.sprite(35, 0, 'fuel');
-    var fuelBarbg = this.game.add.sprite(0, 0, 'fuel_bg');
+    var fuelBar = this.game.add.sprite(this.game.world.centerX, this.game.world.height - 32, 'fuel');
+    var fuelBarbg = this.game.add.sprite(this.game.world.centerX - 35, this.game.world.height - 32, 'fuel_bg');
     var fuel = 100;
     var maxFuel = 100;
     g_game.fuel = fuel;
@@ -47,6 +47,11 @@ GameState.prototype.create = function() {
     asteroidEmitter.minParticleSpeed.setTo(1, 1);
     asteroidEmitter.maxParticleSpeed.setTo(25, 25);
     g_game.asteroidEmitter = asteroidEmitter;
+
+    var hook = this.game.add.sprite(g_game.player.x, g_game.player.y, 'hook');
+    hook.anchor.setTo(0.5, 0.5);
+    hook.visible = false;
+    g_game.hook = hook;
 
     //decrease fuel
     this.game.time.events.loop(Phaser.Timer.SECOND / 4, fuelManagement, this);
@@ -63,7 +68,7 @@ function setupLevel(game) {
             planet.scale.setTo(planetDef.scale);
             planet.isGoal = planetDef.isGoal;
             if (planet.isGoal) {
-                var flag = game.add.sprite(planetDef.x, planetDef.y - planet.height/2, 'goal');
+                var flag = game.add.sprite(planetDef.x, planetDef.y - planet.height / 2, 'goal');
                 flag.anchor.setTo(0.5, 0.5);
             }
             g_game.planets.push(planet);
