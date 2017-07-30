@@ -32,6 +32,7 @@ GameState.prototype.create = function() {
 
 function setupLevel(game) {
 
+//dont have more than 9 planets and you're goooodddd
     for (var i in g_game.levels) {
         if (g_game.levels.hasOwnProperty(i)) {
             //planets
