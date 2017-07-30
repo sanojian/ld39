@@ -14,7 +14,7 @@ function enterOrbit(game, obj, planet) {
 
     for (var i = 0; i < g_game.planets.length; i++) {
         if (g_game.planets[i] == planet && g_game.planets[i].isGoal) {
-           switchLevel(game,g_game.currentlvl+1);
+            switchLevel(game);
         }
     }
     for (var j = 0; j < g_game.specialAsteroids.length; j++) {
@@ -44,18 +44,26 @@ function outOfOrbit() {
     g_game.player.customProps.orbitPlanet = null;
     g_game.player.customProps.state = 'detaching';
     g_game.specialAsteroid.kill();
-   g_game.asteroidEmitter.x = g_game.specialAsteroid.x;
-   g_game.asteroidEmitter.y = g_game.specialAsteroid.y;
+    g_game.asteroidEmitter.x = g_game.specialAsteroid.x;
+    g_game.asteroidEmitter.y = g_game.specialAsteroid.y;
 
-    g_game.asteroidEmitter.start(true,12000,null,25);
+    g_game.asteroidEmitter.start(true, 12000, null, 25);
 
 }
 
-function switchLevel(game,level){
-g_game.currentlvl = level; 
-g_game.planets = [];
-g_game.asteroids = [];
-g_game.specialAsteroids = [];
- game.state.start(game.state.current);
+function switchLevel(game) {
+    game.time.events.add(Phaser.Timer.SECOND, function(){
+levelTransition(game);
+}, this);
+    g_game.planets = [];
+    g_game.asteroids = [];
+    g_game.specialAsteroids = [];
+   // game.state.start(game.state.current);
+
+}
+
+function levelTransition(game){
+
+game.state.start('Transition');
 
 }

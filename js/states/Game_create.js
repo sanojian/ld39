@@ -51,8 +51,6 @@ asteroidEmitter.maxParticleSpeed.setTo(25, 25);
 
 function setupLevel(game) {
 
-
-
     for (var i in g_game.levels[g_game.currentlvl]) {
         //planets
         if (g_game.levels[g_game.currentlvl][i].type == 'planet') {

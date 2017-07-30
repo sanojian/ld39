@@ -9,8 +9,12 @@ window.onload = function() {
     g_game.phaserGame = new Phaser.Game(width, height, Phaser.AUTO, '', null, false, false);
     //g_game.phaserGame = new Phaser.Game(g_game.baseWidth, g_game.baseHeight, Phaser.AUTO,   '',     null,       false,          false);
     g_game.phaserGame.state.add('Boot', Boot);
+
+    g_game.phaserGame.state.add('Transition', Transition);
     g_game.phaserGame.state.add('Splash', SplashScreen);
     g_game.phaserGame.state.add('game', GameState);
+
+
     g_game.phaserGame.state.start('Boot');
 
 
