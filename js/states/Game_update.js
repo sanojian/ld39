@@ -22,16 +22,19 @@ GameState.prototype.update = function() {
         g_game.player.grappleAngle = this.game.physics.arcade.angleToPointer(g_game.player);
         g_game.player.frame = 1;
         g_game.sfx.engine.play();
+        g_game.sfx.grappleExtend.play();
     } else if (!this.game.input.activePointer.isDown && g_game.player.customProps.state == 'travelGrapple') {
         // cancel grapple
         g_game.player.customProps.state = 'travelNoGrapple';
         g_game.player.frame = 1;
         g_game.sfx.engine.play();
+        g_game.sfx.grappleExtend.stop();
     } else if (!this.game.input.activePointer.isDown && g_game.player.customProps.state == 'enteringOrbit') {
         // no longer entering orbit
         g_game.player.customProps.state = 'orbitting';
         g_game.player.frame = 0;
         g_game.sfx.engine.stop();
+        g_game.sfx.grappleExtend.stop();
     } else if (!this.game.input.activePointer.isDown && g_game.player.customProps.state == 'detaching') {
         // ready to deploy grapple
         g_game.player.customProps.state = 'travelNoGrapple';
@@ -86,6 +89,7 @@ GameState.prototype.update = function() {
             var grappleLoc = {};
             grappleLoc.x = g_game.player.x + g_game.player.customProps.grappleLength * Math.cos(g_game.player.grappleAngle);
             grappleLoc.y = g_game.player.y + g_game.player.customProps.grappleLength * Math.sin(g_game.player.grappleAngle);
+
 
             // draw rope
             g_game.drawingSurface.lineStyle(2, 0xffffff, 1);

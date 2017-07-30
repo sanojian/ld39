@@ -25,15 +25,8 @@ GameState.prototype.create = function() {
     g_game.player = player;
     enterOrbit(this.game,g_game.player, g_game.planets[0]);
 
-    // audio
-    if (g_game.sfx.engine) {
-      g_game.sfx.engine.stop();
-    }
-    else {
-      g_game.sfx.engine = this.game.add.audio('engine');
-      g_game.sfx.engine.loop = true;
-      g_game.sfx.engine.volume = 0.2;
-    }
+    initAudio('engine', this.game, 0.2, true);
+    initAudio('grappleExtend', this.game, 0.6, false);
 
     var fuelBarbg = this.game.add.sprite(0, 0, 'fuel_bg');
     var fuelBar = this.game.add.sprite(34, 0, 'fuel');
@@ -109,4 +102,17 @@ function fuelManagement() {
         }
 
     }
+}
+
+function initAudio(sound, game, volume, loop) {
+  // audio
+  if (g_game.sfx[sound]) {
+    g_game.sfx[sound].stop();
+  }
+  else {
+    g_game.sfx[sound] = game.add.audio(sound);
+    g_game.sfx[sound].loop = loop || false;
+    g_game.sfx[sound].volume = volume || 1;
+  }
+
 }
