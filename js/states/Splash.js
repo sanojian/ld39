@@ -3,11 +3,20 @@ SplashScreen.prototype = {
     preload: function() {
         this.load.image('preloaderBar', 'assets/gfx/loading-bar.png');
         this.load.image('splashBackground', 'assets/gfx/splashBackground.png');
-        this.load.image('background', 'assets/gfx/background.png');
 
         this.load.image('planet1', 'assets/gfx/planet1.png');
         this.load.image('planet2', 'assets/gfx/planet2.png');
-        this.load.image('asteroid', 'assets/gfx/asteroid.png');
+        this.load.image('planet3', 'assets/gfx/planet3.png');
+        this.load.image('planet4', 'assets/gfx/planet4.png');
+
+        this.load.image('asteroid1', 'assets/gfx/asteroid1.png');
+        this.load.image('asteroid2', 'assets/gfx/asteroid2.png');
+        this.load.image('asteroid3', 'assets/gfx/asteroid3.png');
+
+        this.load.image('bg1', 'assets/gfx/bg1.png');
+        this.load.image('bg2', 'assets/gfx/bg2.png');
+        this.load.image('bg3', 'assets/gfx/bg3.png');
+
         this.load.image('goal', 'assets/gfx/goal.png');
 
         this.load.image('asteroidfrag1', 'assets/gfx/asteroidfrag1.png');
@@ -22,9 +31,9 @@ SplashScreen.prototype = {
         this.load.image('fuel_bg', 'assets/gfx/fuel_bg.png');
         this.load.image('fuel', 'assets/gfx/fuel.png');
 
-				this.game.load.audio('engine', ['assets/audio/sfx/engine.wav']);
-				this.game.load.audio('grappleExtend', ['assets/audio/sfx/grappleExtend.wav']);
-				this.game.load.audio('grapple', ['assets/audio/sfx/grapple.wav']);
+        this.game.load.audio('engine', ['assets/audio/sfx/engine.wav']);
+        this.game.load.audio('grappleExtend', ['assets/audio/sfx/grappleExtend.wav']);
+        this.game.load.audio('grapple', ['assets/audio/sfx/grapple.wav']);
 
         this.load.bitmapFont('font', 'assets/gfx/font.png', 'assets/gfx/font.xml');
 

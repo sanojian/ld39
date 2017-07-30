@@ -5,7 +5,9 @@ GameState.prototype.create = function() {
 
     this.game.physics.startSystem(Phaser.Physics.ARCADE);
 
-    this.game.add.image(0, 0, 'background');
+    g_game.bg1 = this.game.add.tileSprite(0, 0, 640, 480, 'bg1');
+    g_game.bg2 = this.game.add.tileSprite(0, 0, 640, 480, 'bg2');
+    g_game.bg3 = this.game.add.tileSprite(0, 0, 640, 480, 'bg3');
 
     setupLevel(this.game);
 
@@ -23,7 +25,7 @@ GameState.prototype.create = function() {
     player.events.onOutOfBounds.add(killPlayer, this);
 
     g_game.player = player;
-    enterOrbit(this.game,g_game.player, g_game.planets[0], true);
+    enterOrbit(this.game, g_game.player, g_game.planets[0], true);
 
     initAudio('engine', this.game, 0.2, true);
     initAudio('grappleExtend', this.game, 0.6, false);
@@ -39,11 +41,11 @@ GameState.prototype.create = function() {
     g_game.maxFuel = maxFuel;
     console.log('game started');
 
-  var asteroidEmitter = this.game.add.emitter(0,0,20);
-   asteroidEmitter.makeParticles(['asteroidfrag1','asteroidfrag2','asteroidfrag3']);
+    var asteroidEmitter = this.game.add.emitter(0, 0, 20);
+    asteroidEmitter.makeParticles(['asteroidfrag1', 'asteroidfrag2', 'asteroidfrag3']);
     asteroidEmitter.gravity = 0;
-asteroidEmitter.minParticleSpeed.setTo(1, 1);
-asteroidEmitter.maxParticleSpeed.setTo(25, 25);
+    asteroidEmitter.minParticleSpeed.setTo(1, 1);
+    asteroidEmitter.maxParticleSpeed.setTo(25, 25);
     g_game.asteroidEmitter = asteroidEmitter;
 
     //decrease fuel
@@ -60,6 +62,10 @@ function setupLevel(game) {
             planet.anchor.setTo(0.5, 0.5);
             planet.scale.setTo(planetDef.scale);
             planet.isGoal = planetDef.isGoal;
+            if (planet.isGoal) {
+                var flag = game.add.sprite(planetDef.x, planetDef.y - planet.height/2, 'goal');
+                flag.anchor.setTo(0.5, 0.5);
+            }
             g_game.planets.push(planet);
         }
         //asteroids
@@ -104,14 +110,13 @@ function fuelManagement() {
 }
 
 function initAudio(sound, game, volume, loop) {
-  // audio
-  if (g_game.sfx[sound]) {
-    g_game.sfx[sound].stop();
-  }
-  else {
-    g_game.sfx[sound] = game.add.audio(sound);
-    g_game.sfx[sound].loop = loop || false;
-    g_game.sfx[sound].volume = volume || 1;
-  }
+    // audio
+    if (g_game.sfx[sound]) {
+        g_game.sfx[sound].stop();
+    } else {
+        g_game.sfx[sound] = game.add.audio(sound);
+        g_game.sfx[sound].loop = loop || false;
+        g_game.sfx[sound].volume = volume || 1;
+    }
 
 }

@@ -7,11 +7,15 @@ GameState.prototype.update = function() {
     }
 
 
+g_game.bg1.tilePosition.x += 1;
+g_game.bg2.tilePosition.x += 2;
+g_game.bg2.tilePosition.y += 2;
+g_game.bg3.tilePosition.x += 3;
 
- //     ghetto level editor
-    if (this.game.input.activePointer.isDown) {
-        console.log('planet: { x:' + this.game.input.activePointer.x + ', y:' + this.game.input.activePointer.y + ',key: \'planet2\',scale: 1, type: \'planet\'},');
-    }
+ // //     ghetto level editor
+ //    if (this.game.input.activePointer.isDown) {
+ //        console.log('planet: { x:' + this.game.input.activePointer.x + ', y:' + this.game.input.activePointer.y + ',key: \'planet2\',scale: 1, type: \'planet\'},');
+ //    }
 
 
     // determine state
