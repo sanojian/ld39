@@ -9,6 +9,7 @@ window.g_game = {
     sfx: {},
     planets: [],
     asteroids: [],
+    specialAsteroids: [],
     currentlvl: 2,
     levels: {
         1: {
@@ -24,6 +25,8 @@ window.g_game = {
             planet3: { x: 532, y: 404, key: 'planet2', scale: 1, type: 'planet' },
             planet4: { x: 516, y: 90, key: 'planet1', isGoal: true, scale: 1.5, type: 'planet' },
             asteroid1: { x: 300, y: 100, key: 'asteroid', scale: 2, type: 'asteroid' },
+
+            asteroid2: {  x:308, y:270, key: 'asteroid', scale: 0.8, special: true,type: 'asteroid' },
 
 
         },

@@ -10,6 +10,10 @@ SplashScreen.prototype = {
 		this.load.image('asteroid', 'assets/gfx/asteroid.png');
 		this.load.image('goal', 'assets/gfx/goal.png');
 
+        this.load.image('asteroidfrag1', 'assets/gfx/asteroidfrag1.png');
+        this.load.image('asteroidfrag2', 'assets/gfx/asteroidfrag2.png');
+        this.load.image('asteroidfrag3', 'assets/gfx/asteroidfrag3.png');
+
         this.load.image('fuel_bg', 'assets/gfx/fuel_bg.png');
         this.load.image('fuel', 'assets/gfx/fuel.png');
 

@@ -23,7 +23,7 @@ GameState.prototype.create = function() {
     player.events.onOutOfBounds.add(killPlayer, this);
 
     g_game.player = player;
-    enterOrbit(g_game.player, g_game.planets[0]);
+    enterOrbit(this.game,g_game.player, g_game.planets[0]);
 
 
     var fuelBarbg = this.game.add.sprite(0, 0, 'fuel_bg');
@@ -37,6 +37,13 @@ GameState.prototype.create = function() {
     g_game.fuelBar = fuelBar;
     g_game.maxFuel = maxFuel;
     console.log('game started');
+
+  var asteroidEmitter = this.game.add.emitter(0,0,20);
+   asteroidEmitter.makeParticles(['asteroidfrag1','asteroidfrag2','asteroidfrag3']);
+    asteroidEmitter.gravity = 0;
+asteroidEmitter.minParticleSpeed.setTo(1, 1);
+asteroidEmitter.maxParticleSpeed.setTo(25, 25);
+    g_game.asteroidEmitter = asteroidEmitter;
 
     //decrease fuel
     this.game.time.events.loop(Phaser.Timer.SECOND / 4, fuelManagement, this);
@@ -62,7 +69,11 @@ function setupLevel(game) {
             var asteroid = game.add.sprite(asteroidDef.x, asteroidDef.y, asteroidDef.key);
             asteroid.anchor.setTo(0.5, 0.5);
             asteroid.scale.setTo(asteroidDef.scale);
-            g_game.asteroids.push(asteroid);
+            if (!asteroidDef.special) {
+                g_game.asteroids.push(asteroid);
+            } else {
+                g_game.specialAsteroids.push(asteroid);
+            }
         }
 
 

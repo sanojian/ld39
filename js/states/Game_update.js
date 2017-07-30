@@ -8,7 +8,7 @@ GameState.prototype.update = function() {
 
 
 
-    //ghetto level editor
+    //   ghetto level editor
     // if (this.game.input.activePointer.isDown) {
     //     console.log('planet: { x:' + this.game.input.activePointer.x + ', y:' + this.game.input.activePointer.y + ',key: \'planet2\',scale: 1, type: \'planet\'},');
     // }
@@ -86,44 +86,52 @@ GameState.prototype.update = function() {
             g_game.drawingSurface.lineTo(grappleLoc.x, grappleLoc.y);
 
             // check collision
-            for (i = 0; i < g_game.planets.length; i++) {
-                if (distanceBetween(grappleLoc, g_game.planets[i]) < g_game.planets[i].width) {
-                    enterOrbit(g_game.player, g_game.planets[i]);
-                    var angleShip = normalizeAngle(g_game.player.rotation);
-                    var angleToPlanet = Math.atan2(g_game.player.y - g_game.planets[i].y, g_game.player.x - g_game.planets[i].x);
-                    angleToPlanet = normalizeAngle(angleToPlanet);
-                    console.log(angleShip);
-                    console.log(angleToPlanet);
-                    var diffAngle = angleToPlanet - angleShip;
+            makeOrbitable(this.game,g_game.planets, grappleLoc);
+            makeOrbitable(this.game,g_game.specialAsteroids, grappleLoc);
 
-                    g_game.player.customProps.orbitDirection = -1;
-                    if (angleToPlanet > 3 * Math.PI / 2) {
-                        if (diffAngle > 1) {
-                            g_game.player.customProps.orbitDirection = 1;
-                        }
-                    } else if (angleToPlanet > Math.PI) {
-                        if (diffAngle < 1) {
-                            g_game.player.customProps.orbitDirection = 1;
-                        }
-                    } else if (angleToPlanet > Math.PI / 2) {
-                        if (diffAngle < 1) {
-                            g_game.player.customProps.orbitDirection = 1;
-                        }
-                    } else {
-                        if (angleShip < Math.PI && diffAngle < 1) {
-                            g_game.player.customProps.orbitDirection = 1;
-                        }
-                    }
 
-                }
-
-            }
             g_game.player.customProps.grappleLength += 4;
         }
     }
 
 
 
-
-
 };
+
+
+function makeOrbitable(game,array, grappleLoc) {
+    for (i = 0; i < array.length; i++) {
+        if (distanceBetween(grappleLoc, array[i]) < array[i].width) {
+            enterOrbit(game,g_game.player, array[i]);
+            if (array[i].special) {
+      
+            }
+            var angleShip = normalizeAngle(g_game.player.rotation);
+            var angleToPlanet = Math.atan2(g_game.player.y - array[i].y, g_game.player.x - array[i].x);
+            angleToPlanet = normalizeAngle(angleToPlanet);
+            console.log(angleShip);
+            console.log(angleToPlanet);
+            var diffAngle = angleToPlanet - angleShip;
+
+            g_game.player.customProps.orbitDirection = -1;
+            if (angleToPlanet > 3 * Math.PI / 2) {
+                if (diffAngle > 1) {
+                    g_game.player.customProps.orbitDirection = 1;
+                }
+            } else if (angleToPlanet > Math.PI) {
+                if (diffAngle < 1) {
+                    g_game.player.customProps.orbitDirection = 1;
+                }
+            } else if (angleToPlanet > Math.PI / 2) {
+                if (diffAngle < 1) {
+                    g_game.player.customProps.orbitDirection = 1;
+                }
+            } else {
+                if (angleShip < Math.PI && diffAngle < 1) {
+                    g_game.player.customProps.orbitDirection = 1;
+                }
+            }
+
+        }
+    }
+}
