@@ -10,7 +10,8 @@ module.exports = function(grunt) {
 				files: [
 					'js/**/*.js',
 					'html/index.html',
-					'assets/**/*.png'
+					'assets/**/*.png',
+					'assets/**/*.wav'
 				],
 				tasks: ['build']
 			}

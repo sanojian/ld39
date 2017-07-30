@@ -21,19 +21,22 @@ GameState.prototype.update = function() {
         g_game.player.customProps.grappleLength = 1;
         g_game.player.grappleAngle = this.game.physics.arcade.angleToPointer(g_game.player);
         g_game.player.frame = 1;
-
+        g_game.sfx.engine.play();
     } else if (!this.game.input.activePointer.isDown && g_game.player.customProps.state == 'travelGrapple') {
         // cancel grapple
         g_game.player.customProps.state = 'travelNoGrapple';
         g_game.player.frame = 1;
+        g_game.sfx.engine.play();
     } else if (!this.game.input.activePointer.isDown && g_game.player.customProps.state == 'enteringOrbit') {
         // no longer entering orbit
         g_game.player.customProps.state = 'orbitting';
         g_game.player.frame = 0;
+        g_game.sfx.engine.stop();
     } else if (!this.game.input.activePointer.isDown && g_game.player.customProps.state == 'detaching') {
         // ready to deploy grapple
         g_game.player.customProps.state = 'travelNoGrapple';
         g_game.player.frame = 1;
+        g_game.sfx.engine.play();
     }
 
     for (i = 0; i < g_game.asteroids.length; i++) {

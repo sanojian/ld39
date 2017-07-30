@@ -22,6 +22,7 @@ SplashScreen.prototype = {
         this.load.image('fuel_bg', 'assets/gfx/fuel_bg.png');
         this.load.image('fuel', 'assets/gfx/fuel.png');
 
+				this.game.load.audio('engine', ['assets/audio/sfx/engine.wav']);
 
         this.load.bitmapFont('font', 'assets/gfx/font.png', 'assets/gfx/font.xml');
 

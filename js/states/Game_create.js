@@ -25,6 +25,15 @@ GameState.prototype.create = function() {
     g_game.player = player;
     enterOrbit(this.game,g_game.player, g_game.planets[0]);
 
+    // audio
+    if (g_game.sfx.engine) {
+      g_game.sfx.engine.stop();
+    }
+    else {
+      g_game.sfx.engine = this.game.add.audio('engine');
+      g_game.sfx.engine.loop = true;
+      g_game.sfx.engine.volume = 0.2;
+    }
 
     var fuelBarbg = this.game.add.sprite(0, 0, 'fuel_bg');
     var fuelBar = this.game.add.sprite(34, 0, 'fuel');
@@ -61,7 +70,7 @@ function setupLevel(game) {
             planet.isGoal = planetDef.isGoal;
             g_game.planets.push(planet);
         }
-        //asteroids         
+        //asteroids
         if (g_game.levels[g_game.currentlvl][i].type == 'asteroid') {
             var asteroidDef = g_game.levels[g_game.currentlvl][i];
             var asteroid = game.add.sprite(asteroidDef.x, asteroidDef.y, asteroidDef.key);
