@@ -12,6 +12,10 @@ Transition.prototype = {
         playerEmitter.gravity = 0;
         playerEmitter.start(false, 5000, 50);
         g_game.playerEmitter = playerEmitter;
+
+        g_game.applause = this.game.add.audio('applause');
+        g_game.applause.play();
+        g_game.applause.volume = 0.2;
     },
     update: function() {
 
@@ -21,16 +25,17 @@ Transition.prototype = {
         g_game.transitionalPlayer.x += 3;
 
         if (g_game.transitionalPlayer.x > this.game.width) {
-        goToLevel(this.game,g_game.currentlvl+1);
+            goToLevel(this.game, g_game.currentlvl + 1);
+            g_game.applause.stop();
         }
 
     }
 
 };
 
-function goToLevel(game, level){
-game.state.start('game');
-g_game.currentlvl = level;
+function goToLevel(game, level) {
+    game.state.start('game');
+    g_game.currentlvl = level;
 }
 
 //yes this is a map editor, sue me

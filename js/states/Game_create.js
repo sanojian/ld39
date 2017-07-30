@@ -53,6 +53,9 @@ GameState.prototype.create = function() {
     hook.visible = false;
     g_game.hook = hook;
 
+   var song = this.game.add.audio('ingame');
+    song.loopFull(0.6);
+
     //decrease fuel
     this.game.time.events.loop(Phaser.Timer.SECOND / 4, fuelManagement, this);
 };

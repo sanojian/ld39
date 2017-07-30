@@ -37,6 +37,10 @@ SplashScreen.prototype = {
         this.game.load.audio('engine', ['assets/audio/sfx/engine.wav']);
         this.game.load.audio('grappleExtend', ['assets/audio/sfx/grappleExtend.wav']);
         this.game.load.audio('grapple', ['assets/audio/sfx/grapple.wav']);
+        this.game.load.audio('ingame', ['assets/audio/sfx/ingame.mp3']);
+        this.game.load.audio('applause', ['assets/audio/sfx/applause.wav']);
+
+
 
         this.load.bitmapFont('font', 'assets/gfx/font.png', 'assets/gfx/font.xml');
 
@@ -47,14 +51,19 @@ SplashScreen.prototype = {
     create: function() {
         g_game.spaceKey = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
 
-        this.game.add.image(0, 0, 'splashBackground');
+        g_game.splashBackground = this.game.add.image(0, 0, 'splashBackground');
 
         console.log('waiting for space...');
     },
     update: function() {
         if (g_game.spaceKey.isDown) {
-            this.game.state.start('game');
+            g_game.splashBackground.visible = false;
+  
         }
+          if (this.cache.isSoundDecoded('ingame') && g_game.splashBackground.visible == false) {
+                this.game.state.start('game');
+            }
+
     }
 
 };
