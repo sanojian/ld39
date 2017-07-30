@@ -32,12 +32,12 @@ GameState.prototype.create = function() {
 
 function setupLevel(game) {
 
-//dont have more than 9 planets and you're goooodddd
-    for (var i in g_game.levels) {
-        if (g_game.levels.hasOwnProperty(i)) {
+
+
+    for (var i in g_game.levels[g_game.currentlvl]) {
             //planets
-            if (g_game.levels[g_game.currentlvl]['planet' + i]) {
-                var planetDef = g_game.levels[g_game.currentlvl]['planet' + i];
+            if (g_game.levels[g_game.currentlvl][i].type == 'planet') {
+                var planetDef = g_game.levels[g_game.currentlvl][i];
                 var planet = game.add.sprite(planetDef.x, planetDef.y, planetDef.key);
                 planet.anchor.setTo(0.5, 0.5);
                 planet.scale.setTo(planetDef.scale);
@@ -45,8 +45,8 @@ function setupLevel(game) {
                 g_game.planets.push(planet);
             }
             //asteroids         
-            if (g_game.levels[g_game.currentlvl]['asteroid' + i]) {
-                var asteroidDef = g_game.levels[g_game.currentlvl]['asteroid' + i];
+            if (g_game.levels[g_game.currentlvl][i].type == 'asteroid') {
+                var asteroidDef = g_game.levels[g_game.currentlvl][i];
                 var asteroid = game.add.sprite(asteroidDef.x, asteroidDef.y, asteroidDef.key);
                 asteroid.anchor.setTo(0.5, 0.5);
                 asteroid.scale.setTo(asteroidDef.scale);
@@ -55,7 +55,8 @@ function setupLevel(game) {
 
 
         }
-    }
+    
+
 
 
 }
