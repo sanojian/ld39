@@ -6,6 +6,14 @@ GameState.prototype.update = function() {
         this.game.state.start('game');
     }
 
+
+
+    //ghetto level editor
+    // if (this.game.input.activePointer.isDown) {
+    //     console.log('planet: { x:' + this.game.input.activePointer.x + ', y:' + this.game.input.activePointer.y + ',key: \'planet2\',scale: 1, type: \'planet\'},');
+    // }
+
+
     // determine state
     if (this.game.input.activePointer.isDown && g_game.player.customProps.state == 'travelNoGrapple') {
         // deploy grapple
@@ -27,6 +35,8 @@ GameState.prototype.update = function() {
     for (i = 0; i < g_game.asteroids.length; i++) {
         g_game.asteroids[i].rotation += 0.005;
     }
+
+console.log(g_game.player.customProps.state);
 
     g_game.drawingSurface.clear();
 
@@ -90,25 +100,22 @@ GameState.prototype.update = function() {
                     var diffAngle = angleToPlanet - angleShip;
 
                     g_game.player.customProps.orbitDirection = -1;
-                    if (angleToPlanet > 3* Math.PI/2) {
-                      if (diffAngle > 1) {
-                        g_game.player.customProps.orbitDirection = 1;
-                      }
-                    }
-                    else if (angleToPlanet > Math.PI) {
-                      if (diffAngle < 1) {
-                        g_game.player.customProps.orbitDirection = 1;
-                      }
-                    }
-                    else if (angleToPlanet > Math.PI/2) {
-                      if (diffAngle < 1) {
-                        g_game.player.customProps.orbitDirection = 1;
-                      }
-                    }
-                    else {
-                      if (angleShip < Math.PI && diffAngle < 1) {
-                        g_game.player.customProps.orbitDirection = 1;
-                      }
+                    if (angleToPlanet > 3 * Math.PI / 2) {
+                        if (diffAngle > 1) {
+                            g_game.player.customProps.orbitDirection = 1;
+                        }
+                    } else if (angleToPlanet > Math.PI) {
+                        if (diffAngle < 1) {
+                            g_game.player.customProps.orbitDirection = 1;
+                        }
+                    } else if (angleToPlanet > Math.PI / 2) {
+                        if (diffAngle < 1) {
+                            g_game.player.customProps.orbitDirection = 1;
+                        }
+                    } else {
+                        if (angleShip < Math.PI && diffAngle < 1) {
+                            g_game.player.customProps.orbitDirection = 1;
+                        }
                     }
 
                 }
@@ -117,5 +124,9 @@ GameState.prototype.update = function() {
             g_game.player.customProps.grappleLength += 4;
         }
     }
+
+
+
+
 
 };

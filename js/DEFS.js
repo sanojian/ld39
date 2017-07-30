@@ -9,7 +9,7 @@ window.g_game = {
     sfx: {},
     planets: [],
     asteroids: [],
-    currentlvl: 1,
+    currentlvl: 2,
     levels: {
         1: {
             planet1: { x: 100, y: 100, key: 'planet1', scale: 1, type: 'planet' },
@@ -20,8 +20,9 @@ window.g_game = {
 
         2: {
             planet1: { x: 100, y: 100, key: 'planet1', scale: 1, type: 'planet' },
-            planet2: { x: 400, y: 400, key: 'planet2', scale: 1, type: 'planet' },
-            planet3: { x: 400, y: 100, key: 'planet1', isGoal: true, scale: 1.5, type: 'planet' },
+            planet2: { x: 113, y: 398, key: 'planet2', scale: 1, type: 'planet' },
+            planet3: { x: 532, y: 404, key: 'planet2', scale: 1, type: 'planet' },
+            planet4: { x: 516, y: 90, key: 'planet1', isGoal: true, scale: 1.5, type: 'planet' },
             asteroid1: { x: 300, y: 100, key: 'asteroid', scale: 2, type: 'asteroid' },
 
 
