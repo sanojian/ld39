@@ -110,12 +110,12 @@ function placeTile(game){
         if (game.input.mousePointer.isDown && g_game.marker.y > 24 && g_game.currentTile == 'asteroid') {
             g_game.edasteroidsindex += 1;
             g_game.sandbox.putTile(g_game.currentTileIndex, g_game.layer.getTileX(g_game.marker.x), g_game.layer.getTileY(g_game.marker.y), g_game.layer);
-            g_game.output += 'asteroid' + g_game.edasteroidsindex + ':{x:' + g_game.layer.getTileX(g_game.marker.x) + ",y:" + g_game.layer.getTileY(g_game.marker.y) + ",key:\'asteroid1\',scale: 1.2, special:false,type:\'asteroid\' '},\n";
+            g_game.output += 'asteroid' + g_game.edasteroidsindex + ':{x:' + g_game.layer.getTileX(g_game.marker.x) * 24 + ",y:" + g_game.layer.getTileY(g_game.marker.y)* 24 + ",key:\'asteroid1\',scale: 1.2, special:false,type:\'asteroid\' '},\n";
             console.log(g_game.output);
         } else if (game.input.mousePointer.isDown && g_game.marker.y > 24 && g_game.currentTile == 'planet') {
             g_game.edplanetsindex += 1;
             g_game.sandbox.putTile(g_game.currentTileIndex, g_game.layer.getTileX(g_game.marker.x), g_game.layer.getTileY(g_game.marker.y), g_game.layer);
-            g_game.output += 'planet' + g_game.edplanetsindex + ':{x:' + g_game.layer.getTileX(g_game.marker.x) + ",y:" + g_game.layer.getTileY(g_game.marker.y) + ",key:\'planet1\',scale: 1, isFuel:true,type:\'planet\'},\n";
+            g_game.output += 'planet' + g_game.edplanetsindex + ':{x:' + g_game.layer.getTileX(g_game.marker.x)* 24 + ",y:" + g_game.layer.getTileY(g_game.marker.y)* 24 + ",key:\'planet1\',scale: 1, isFuel:true,type:\'planet\'},\n";
             console.log(g_game.output);
         }
     }
