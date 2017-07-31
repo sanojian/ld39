@@ -54,6 +54,7 @@ function outOfOrbit() {
     g_game.player.customProps.velocityY = 2 * Math.sin(g_game.player.rotation);
     g_game.player.customProps.orbitPlanet = null;
     g_game.player.customProps.state = 'detaching';
+    g_game.specialAsteroid.myAura.kill();
     g_game.specialAsteroid.kill();
     g_game.asteroidEmitter.x = g_game.specialAsteroid.x;
     g_game.asteroidEmitter.y = g_game.specialAsteroid.y;
@@ -70,11 +71,5 @@ function switchLevel(game, stage) {
     g_game.asteroids = [];
     g_game.specialAsteroids = [];
    // game.state.start(game.state.current);
-
-}
-
-function levelTransition(game){
-
-game.state.start('Transition');
 
 }

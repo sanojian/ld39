@@ -139,6 +139,7 @@ function makeOrbitable(game, array, grappleLoc) {
             angleToPlanet = normalizeAngle(angleToPlanet);
             var diffAngle = angleToPlanet - angleShip;
 
+            // TODO: gets direction wrong sometimes
             g_game.player.customProps.orbitDirection = -1;
             if (angleToPlanet > 3 * Math.PI / 2) {
                 if (diffAngle > 1) {

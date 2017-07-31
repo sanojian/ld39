@@ -83,6 +83,12 @@ function setupLevel(game) {
                 var flag = game.add.sprite(planetDef.x, planetDef.y - planet.height / 2, 'goal');
                 flag.anchor.setTo(0.5, 0.5);
             }
+            else  {
+                // TODO: check if fueling planet
+                //var pump = game.add.sprite(planetDef.x, planetDef.y - planet.height / 4, 'pump');
+                //pump.anchor.setTo(0.5, 0.5);
+                addAura(planet);
+            }
             g_game.planets.push(planet);
         }
         //asteroids
@@ -94,6 +100,7 @@ function setupLevel(game) {
             if (!asteroidDef.special) {
                 g_game.asteroids.push(asteroid);
             } else {
+                addAura(asteroid);
                 g_game.specialAsteroids.push(asteroid);
             }
         }
@@ -135,5 +142,4 @@ function initAudio(sound, game, volume, loop) {
         g_game.sfx[sound].loop = loop || false;
         g_game.sfx[sound].volume = volume || 1;
     }
-
 }

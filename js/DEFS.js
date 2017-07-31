@@ -19,7 +19,7 @@ window.g_game = {
             planet3: { x: 578, y: 235, key: 'planet3', scale: 1, isGoal: true, type: 'planet' },
         },
 
-        //done  
+        //done
         2: {
             planet1: { x: 66, y: 226, key: 'planet4', scale: 1, type: 'planet' },
             planet2: { x: 324, y: 226, key: 'planet3', scale: 1, type: 'planet' },
