@@ -16,10 +16,12 @@ function enterOrbit(game, obj, planet, skipSound) {
       g_game.sfx.grapple.play();
     }
 
-    for (var i = 0; i < g_game.planets.length; i++) {
-        if (g_game.planets[i] == planet && g_game.planets[i].isGoal) {
-            switchLevel(game);
-        }
+    if (obj == g_game.player) {
+      for (var i = 0; i < g_game.planets.length; i++) {
+          if (g_game.planets[i] == planet && g_game.planets[i].isGoal) {
+              switchLevel(game);
+          }
+      }
     }
     for (var j = 0; j < g_game.specialAsteroids.length; j++) {
         if (g_game.specialAsteroids[j] == planet) {

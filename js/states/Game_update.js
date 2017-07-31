@@ -49,9 +49,21 @@ GameState.prototype.update = function() {
         g_game.sfx.engine.play();
     }
 
+    // FX
     for (i = 0; i < g_game.asteroids.length; i++) {
         g_game.asteroids[i].rotation += 0.005;
     }
+    // enemy ship
+    var da = 1 * (-1) / g_game.enemy.customProps.grappleLength;
+    g_game.enemy.customProps.orbitAngle += da;
+
+    g_game.enemy.rotation = g_game.enemy.customProps.orbitAngle - Math.PI / 2;
+
+    var planet = g_game.enemy.customProps.orbitPlanet;
+    g_game.enemy.x = planet.x + g_game.enemy.customProps.grappleLength * Math.cos(g_game.enemy.customProps.orbitAngle);
+    g_game.enemy.y = planet.y + g_game.enemy.customProps.grappleLength * Math.sin(g_game.enemy.customProps.orbitAngle);
+
+
     g_game.drawingSurface.clear();
 
     if (this.game.input.activePointer.isDown && g_game.player.customProps.state == 'orbitting') {
@@ -64,12 +76,12 @@ GameState.prototype.update = function() {
     } else if (g_game.player.customProps.state == 'orbitting' || g_game.player.customProps.state == 'enteringOrbit') {
         // orbitting
         g_game.hook.visible = false;
-        var da = 2 * (g_game.player.customProps.orbitDirection || 1) / g_game.player.customProps.grappleLength;
+        da = 2 * (g_game.player.customProps.orbitDirection || 1) / g_game.player.customProps.grappleLength;
         g_game.player.customProps.orbitAngle += da;
 
         g_game.player.rotation = g_game.player.customProps.orbitAngle + (g_game.player.customProps.orbitDirection || 1) * Math.PI / 2;
 
-        var planet = g_game.player.customProps.orbitPlanet;
+        planet = g_game.player.customProps.orbitPlanet;
         g_game.player.x = planet.x + g_game.player.customProps.grappleLength * Math.cos(g_game.player.customProps.orbitAngle);
         g_game.player.y = planet.y + g_game.player.customProps.grappleLength * Math.sin(g_game.player.customProps.orbitAngle);
 

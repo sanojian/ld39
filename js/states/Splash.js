@@ -51,6 +51,7 @@ SplashScreen.prototype = {
 
 
         this.load.spritesheet('ship1', 'assets/gfx/ship1.png', 16, 9);
+        this.load.spritesheet('ship2', 'assets/gfx/shipEnemy.png', 16, 9);
 
     },
     create: function() {

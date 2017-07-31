@@ -6,10 +6,15 @@ Transition.prototype = {
             var transitionText = this.game.add.bitmapText(this.game.world.centerX, 128, 'font', 'GOOD JOB! \n BUT, SHE IS ON ANOTHER PLANET!', 32);
             transitionText.anchor.setTo(0.5, 0.5);
 
-            var player = this.game.add.sprite(-64, this.game.world.centerY, 'ship1');
+            var player = this.game.add.sprite(-128, this.game.world.centerY, 'ship1');
             player.scale.setTo(3, 3);
+            player.frame = 1;
             g_game.transitionalPlayer = player;
-          g_game.transitionalPlayer.frame = 1;
+            player = this.game.add.sprite(32, this.game.world.centerY, 'ship2');
+            player.scale.setTo(3, 3);
+            player.frame = 1;
+            g_game.transitionalPlayer2 = player;
+            g_game.transitionalPlayer2.speed = 1
 
         } else {
 
@@ -32,8 +37,10 @@ Transition.prototype = {
     },
     update: function() {
         if (g_game.currentlvl < 7) {
-           
+
             g_game.transitionalPlayer.x += 3;
+            g_game.transitionalPlayer2.x += g_game.transitionalPlayer2.speed;
+            g_game.transitionalPlayer2.speed += 0.1;
 
             if (g_game.transitionalPlayer.x > this.game.width) {
                 goToLevel(this.game, g_game.currentlvl + 1);

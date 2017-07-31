@@ -23,9 +23,15 @@ GameState.prototype.create = function() {
     };
     player.checkWorldBounds = true;
     player.events.onOutOfBounds.add(killPlayer, this);
-
     g_game.player = player;
+
     enterOrbit(this.game, g_game.player, g_game.planets[0], true);
+
+    g_game.enemy = this.game.add.sprite(g_game.planets[g_game.planets.length-1].x, g_game.planets[g_game.planets.length-1].y - 32, 'ship2');
+    g_game.enemy.anchor.setTo(0.5, 0.5);
+    g_game.enemy.customProps = {};
+
+    enterOrbit(this.game, g_game.enemy, g_game.planets[g_game.planets.length-1], true);
 
     initAudio('engine', this.game, 0.2, true);
     initAudio('grappleExtend', this.game, 0.6, false);
