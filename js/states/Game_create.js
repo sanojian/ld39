@@ -105,18 +105,18 @@ function setupLevel(game) {
 
 function fuelManagement() {
     if (g_game.player.customProps.state == 'travelNoGrapple' && g_game.fuel > 0 || g_game.player.customProps.state == 'travelGrapple' && g_game.fuel > 0) {
-        g_game.fuel -= 6;
+        g_game.fuel -= 8;
     }
 
     if (g_game.player.customProps.state == 'orbitting' && g_game.fuel < g_game.maxFuel) {
-        g_game.fuel += 10;
+        g_game.fuel = Math.min(g_game.maxFuel, g_game.fuel + 10);
 
     }
-    g_game.fuelBar.width = Math.floor(g_game.fuel / g_game.maxFuel * 93);
-    if (g_game.fuel <= 0 && g_game.player.customProps.state == 'travelNoGrapple' || g_game.fuel <= 0 && g_game.player.customProps.state == 'travelGrapple') {
+    g_game.fuelBar.width = Math.floor(g_game.fuel / g_game.maxFuel * 94);
+    if (g_game.fuel <= 0 && (g_game.player.customProps.state == 'travelNoGrapple' || g_game.player.customProps.state == 'travelGrapple')) {
         if (g_game.player.customProps.velocityX > 0 && g_game.player.customProps.velocityY > 0) {
-            g_game.player.customProps.velocityX -= 1;
-            g_game.player.customProps.velocityY -= 1;
+            g_game.player.customProps.velocityX -= g_game.player.customProps.velocityX * 0.3;
+            g_game.player.customProps.velocityY -= g_game.player.customProps.velocityY * 0.3;
         } else {
             g_game.player.customProps.velocityX = 0;
             g_game.player.customProps.velocityY = 0;

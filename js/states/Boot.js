@@ -8,7 +8,7 @@ Boot.prototype = {
   },
   create: function() {
 
-    this.game.stage.smoothed = false;
+    //this.game.stage.smoothed = false;
     this.scale.minWidth = g_game.baseWidth;
     this.scale.minHeight = g_game.baseHeight;
     this.scale.maxWidth = g_game.baseWidth * g_game.scale;

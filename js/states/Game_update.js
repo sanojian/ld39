@@ -118,10 +118,8 @@ GameState.prototype.update = function() {
             makeOrbitable(this.game, g_game.planets, grappleLoc);
             makeOrbitable(this.game, g_game.specialAsteroids, grappleLoc);
 
-           if(g_game.player.customProps.grappleLength < 250){
-            g_game.player.customProps.grappleLength += 4;
+            g_game.player.customProps.grappleLength = Math.min(120, g_game.player.customProps.grappleLength + 2);
 
-}
         } else {
             g_game.hook.visible = false;
         }
