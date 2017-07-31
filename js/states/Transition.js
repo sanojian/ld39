@@ -3,8 +3,12 @@ Transition.prototype = {
     create: function() {
 
         if (g_game.currentlvl < 7) {
-            var transitionText = this.game.add.bitmapText(this.game.world.centerX, 128, 'font', g_game.levels[g_game.currentlvl].message, 32);
-            transitionText.anchor.setTo(0.5, 0.5);
+            var style = { font: "bold 16px 'Press Start 2P'", fill: "#DEEED6" };
+            this.game.add.text(this.game.width/2, 128, g_game.levels[g_game.currentlvl].message.toUpperCase(), style).anchor.set(0.5, 0.5);
+
+
+            //var transitionText = this.game.add.bitmapText(this.game.world.centerX, 128, 'font', g_game.levels[g_game.currentlvl].message, 32);
+            //transitionText.anchor.setTo(0.5, 0.5);
 
             var player = this.game.add.sprite(-128, this.game.world.centerY, 'ship1');
             player.scale.setTo(3, 3);
@@ -61,4 +65,3 @@ function goToLevel(game, level) {
     game.state.start('game');
     g_game.currentlvl = level;
 }
-

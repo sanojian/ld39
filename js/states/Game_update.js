@@ -54,7 +54,7 @@ GameState.prototype.update = function() {
         g_game.asteroids[i].rotation += 0.005;
     }
     // enemy ship
-    var da = 1 * (-1) / g_game.enemy.customProps.grappleLength;
+    var da = 0.5 * (-1) / g_game.enemy.customProps.grappleLength;
     g_game.enemy.customProps.orbitAngle += da;
 
     g_game.enemy.rotation = g_game.enemy.customProps.orbitAngle - Math.PI / 2;
@@ -86,7 +86,7 @@ GameState.prototype.update = function() {
         g_game.player.y = planet.y + g_game.player.customProps.grappleLength * Math.sin(g_game.player.customProps.orbitAngle);
 
         // draw rope
-        g_game.drawingSurface.lineStyle(2, 0xffffff, 1);
+        g_game.drawingSurface.lineStyle(2, 0x5E7F97, 1);
         g_game.drawingSurface.moveTo(g_game.player.x, g_game.player.y);
         g_game.drawingSurface.lineTo(planet.x, planet.y);
 
@@ -122,7 +122,7 @@ GameState.prototype.update = function() {
 
 
             // draw rope
-            g_game.drawingSurface.lineStyle(2, 0xffffff, 1);
+            g_game.drawingSurface.lineStyle(2, 0x5E7F97, 1);
             g_game.drawingSurface.moveTo(g_game.player.x, g_game.player.y);
             g_game.drawingSurface.lineTo(grappleLoc.x, grappleLoc.y);
 

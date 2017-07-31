@@ -39,9 +39,14 @@ GameState.prototype.create = function() {
 
     initAudio('engine', this.game, 0.2, true);
     initAudio('grappleExtend', this.game, 0.6, false);
-    initAudio('grapple', this.game, 0.6, false);
+    initAudio('grapple', this.game, 0.4, false);
     initAudio('explode', this.game, 1, false);
-    initAudio('fill', this.game, 0.6, false);
+    initAudio('fill', this.game, 0.4, false);
+
+    g_game.musicIntro.stop();
+    if (!g_game.musicIngame.isPlaying) {
+        g_game.musicIngame.loopFull(0.6);
+    }
 
     var fuelBar = this.game.add.sprite(this.game.world.centerX - 5, this.game.world.height - 32, 'fuel');
     var fuelBarbg = this.game.add.sprite(this.game.world.centerX - 36, this.game.world.height - 32, 'fuel_bg');

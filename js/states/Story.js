@@ -11,10 +11,14 @@ Story.prototype = {
         storyScreen.width = this.game.width;
         storyScreen.height = this.game.height;
 
-        var song = this.game.add.audio('ingame');
-        if (!song.isPlaying) {
-            song.loopFull(0.6);
-        }
+        var style = { font: "bold 18px 'Press Start 2P'", fill: "#DEEED6" };
+        this.game.add.text(
+          this.game.width/2,
+          128,
+          'Oh no!  You have been betrayed\nand your beloved kidnapped.\n\nTime to fuel up and chase the\ndastardly perpitrator!'.toUpperCase(),
+          style
+        ).anchor.set(0.5, 0.5);
+
 
     },
     update: function() {

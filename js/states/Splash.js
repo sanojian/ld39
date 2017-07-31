@@ -44,7 +44,9 @@ SplashScreen.prototype = {
         this.game.load.audio('explode', ['assets/audio/sfx/explode.wav']);
         this.game.load.audio('applause', ['assets/audio/sfx/applause.wav']);
         this.game.load.audio('fill', ['assets/audio/sfx/fill.wav']);
-        this.game.load.audio('ingame', ['assets/audio/music/ingame.mp3']);
+
+				this.game.load.audio('ingame', ['assets/audio/music/ingame.mp3']);
+        this.game.load.audio('intro', ['assets/audio/music/Night-Winds_Looping.mp3']);
 
 
 
@@ -64,6 +66,11 @@ SplashScreen.prototype = {
 
         g_game.splashBackground = this.game.add.image(0, 0, 'splashBackground');
 
+				g_game.musicIngame = this.game.add.audio('ingame');
+				g_game.musicIntro = this.game.add.audio('intro');
+        if (!g_game.musicIntro.isPlaying) {
+            g_game.musicIntro.loopFull(0.6);
+        }
 
 
     },

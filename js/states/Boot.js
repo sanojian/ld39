@@ -20,6 +20,11 @@ Boot.prototype = {
     // catch right click mouse
     this.game.canvas.oncontextmenu = function (e) { e.preventDefault(); };
 
+    // dummy to preload font
+    var style = { font: "bold 24px 'Press Start 2P'", fill: "#DEEED6" };
+    this.game.add.text(this.game.width/2, 128, ' ', style).anchor.set(0.5, 0.5);
+
+
     this.state.start('Splash');
   }
 };
