@@ -135,6 +135,8 @@ GameState.prototype.update = function() {
         } else {
             g_game.hook.visible = false;
         }
+    } else {
+        g_game.hook.visible = false;
     }
 
 
