@@ -3,7 +3,7 @@ Transition.prototype = {
     create: function() {
 
         if (g_game.currentlvl < 7) {
-            var transitionText = this.game.add.bitmapText(this.game.world.centerX, 128, 'font', 'GOOD JOB! \n BUT, SHE IS ON ANOTHER PLANET!', 32);
+            var transitionText = this.game.add.bitmapText(this.game.world.centerX, 128, 'font', g_game.levels[g_game.currentlvl].message, 32);
             transitionText.anchor.setTo(0.5, 0.5);
 
             var player = this.game.add.sprite(-128, this.game.world.centerY, 'ship1');
@@ -14,7 +14,7 @@ Transition.prototype = {
             player.scale.setTo(3, 3);
             player.frame = 1;
             g_game.transitionalPlayer2 = player;
-            g_game.transitionalPlayer2.speed = 1
+            g_game.transitionalPlayer2.speed = 1;
 
         } else {
 

@@ -10,30 +10,31 @@ window.g_game = {
     planets: [],
     asteroids: [],
     specialAsteroids: [],
-    currentlvl: 1,
+    currentlvl: 2,
     levels: {
         //done
         1: {
             planet1: { x: 66, y: 226, key: 'planet1', scale: 1, type: 'planet' },
-            planet2: { x: 324, y: 226, key: 'planet2', scale: 1, type: 'planet' },
+            planet2: { x: 324, y: 226, key: 'planet2', scale: 1, isFuel: true, type: 'planet' },
             planet3: { x: 578, y: 235, key: 'planet3', scale: 1, isGoal: true, type: 'planet' },
+            message: 'Good job \n BUT, SHE IS ON ANOTHER PLANET!'
         },
 
         //done
         2: {
             planet1: { x: 66, y: 226, key: 'planet4', scale: 1, type: 'planet' },
-            planet2: { x: 324, y: 226, key: 'planet3', scale: 1, type: 'planet' },
+            planet2: { x: 324, y: 226, key: 'planet3', scale: 1, isFuel: true, type: 'planet' },
             planet3: { x: 578, y: 235, key: 'planet2', scale: 1, isGoal: true, type: 'planet' },
             asteroid1: { x: 170, y: 159, key: 'asteroid1', scale: 2, type: 'asteroid' },
             asteroid2: { x: 446, y: 293, key: 'asteroid1', scale: 2, type: 'asteroid' },
-
+            message: 'You think you won, \n But she is not here either!'
         },
         //done
         3: {
             planet1: { x: 66, y: 226, key: 'planet3', scale: 1, type: 'planet' },
             planet2: { x: 578, y: 235, key: 'planet1', scale: 1, isGoal: true, type: 'planet' },
             asteroid1: { x: 324, y: 226, key: 'asteroid2', scale: 0.8, special: true, type: 'asteroid' },
-
+            message: 'Good job \n BUT, SHE IS ON ANOTHER PLANET!'
 
         },
         //done
@@ -42,7 +43,7 @@ window.g_game = {
             planet2: { x: 578, y: 235, key: 'planet3', scale: 1, isGoal: true, type: 'planet' },
             asteroid1: { x: 324, y: 324, key: 'asteroid2', scale: 0.8, special: true, type: 'asteroid' },
             asteroid2: { x: 324, y: 226, key: 'asteroid1', scale: 2, type: 'asteroid' },
-
+            message: 'Good job \n BUT, SHE IS ON ANOTHER PLANET!'
 
         },
         5: {
@@ -78,7 +79,7 @@ window.g_game = {
             asteroid27: { x: 640, y: 250, key: 'asteroid3', scale: 1, special: false, type: 'asteroid' },
             asteroid28: { x: 660, y: 250, key: 'asteroid1', scale: 1, special: false, type: 'asteroid' },
             asteroid29: { x: 6800, y: 250, key: 'asteroid3', scale: 1, special: false, type: 'asteroid' },
-
+            message: 'Good job \n BUT, SHE IS ON ANOTHER PLANET!'
         },
         6: {
             planet1: { x: 299, y: 381, key: 'planet1', scale: 1, type: 'planet' },
@@ -86,7 +87,7 @@ window.g_game = {
             planet3: { x: 308, y: 91, key: 'planet3', scale: 1, type: 'planet' , isGoal: true},
             asteroid1: { x: 307, y: 232, key: 'asteroid1', scale: 1, special: false, type: 'asteroid' },
             planet4: { x: 156, y: 227, key: 'planet4', scale: 1, type: 'planet' },
-
+            message: 'Good job \n BUT, SHE IS ON ANOTHER PLANET!'
 
         },
 

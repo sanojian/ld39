@@ -122,7 +122,7 @@ function fuelManagement() {
         g_game.fuel -= 8;
     }
 
-    if (g_game.player.customProps.state == 'orbitting' && g_game.fuel < g_game.maxFuel) {
+    if (g_game.player.customProps.state == 'orbitting' && g_game.player.customProps.orbitPlanet.isFuel) {
         g_game.fuel = Math.min(g_game.maxFuel, g_game.fuel + 10);
 
     }
