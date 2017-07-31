@@ -1,36 +1,53 @@
 var Transition = function(game) {};
 Transition.prototype = {
     create: function() {
-        var transitionText = this.game.add.bitmapText(this.game.world.centerX, 128, 'font', 'GOOD JOB! \n BUT, SHE IS ON ANOTHER PLANET!', 32);
-        transitionText.anchor.setTo(0.5, 0.5);
 
-        var player = this.game.add.sprite(-64, this.game.world.centerY, 'ship1');
-        player.scale.setTo(3, 3);
-        g_game.transitionalPlayer = player;
-        var playerEmitter = this.game.add.emitter(player.x, player.y, 100);
-        playerEmitter.makeParticles(['rocketfrag1', 'rocketfrag2', 'rocketfrag3']);
-        playerEmitter.gravity = 0;
-        playerEmitter.start(false, 5000, 50);
-        g_game.playerEmitter = playerEmitter;
+        if (g_game.currentlvl < 7) {
+            var transitionText = this.game.add.bitmapText(this.game.world.centerX, 128, 'font', 'GOOD JOB! \n BUT, SHE IS ON ANOTHER PLANET!', 32);
+            transitionText.anchor.setTo(0.5, 0.5);
+
+            var player = this.game.add.sprite(-64, this.game.world.centerY, 'ship1');
+            player.scale.setTo(3, 3);
+            g_game.transitionalPlayer = player;
+          g_game.transitionalPlayer.frame = 1;
+
+        } else {
+
+            var romanticimageaww = this.game.add.sprite(0, 0, 'win');
+            romanticimageaww.width = this.game.width;
+            romanticimageaww.height = this.game.height;
+
+
+            g_game.youdidit = this.game.add.bitmapText(this.game.world.centerX, -64, 'font', 'YOU DID IT!', 32);
+            g_game.youdidit.anchor.setTo(0.5, 0.5);
+
+
+
+        }
+
 
         g_game.applause = this.game.add.audio('applause');
         g_game.applause.play();
         g_game.applause.volume = 0.2;
     },
     update: function() {
+        if (g_game.currentlvl < 7) {
+           
+            g_game.transitionalPlayer.x += 3;
 
-        g_game.playerEmitter.x = g_game.transitionalPlayer.x;
-        g_game.playerEmitter.y = g_game.transitionalPlayer.y + g_game.transitionalPlayer.height / 2;
+            if (g_game.transitionalPlayer.x > this.game.width) {
+                goToLevel(this.game, g_game.currentlvl + 1);
+                g_game.applause.stop();
+            }
+        }else{
 
-        g_game.transitionalPlayer.x += 3;
-
-        if (g_game.transitionalPlayer.x > this.game.width) {
-            goToLevel(this.game, g_game.currentlvl + 1);
-            g_game.applause.stop();
+        if (g_game.youdidit.y < 128) {
+            g_game.youdidit.y += 1;
         }
 
     }
 
+}
 };
 
 function goToLevel(game, level) {

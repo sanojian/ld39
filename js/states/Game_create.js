@@ -31,8 +31,8 @@ GameState.prototype.create = function() {
     initAudio('grappleExtend', this.game, 0.6, false);
     initAudio('grapple', this.game, 0.6, false);
 
-    var fuelBar = this.game.add.sprite(this.game.world.centerX, this.game.world.height - 32, 'fuel');
-    var fuelBarbg = this.game.add.sprite(this.game.world.centerX - 35, this.game.world.height - 32, 'fuel_bg');
+    var fuelBar = this.game.add.sprite(this.game.world.centerX - 5, this.game.world.height - 32, 'fuel');
+    var fuelBarbg = this.game.add.sprite(this.game.world.centerX - 36, this.game.world.height - 32, 'fuel_bg');
     var fuel = 100;
     var maxFuel = 100;
     g_game.fuel = fuel;
@@ -54,8 +54,9 @@ GameState.prototype.create = function() {
     g_game.hook = hook;
 
    var song = this.game.add.audio('ingame');
+if(!song.isPlaying){
     song.loopFull(0.6);
-
+}
     //decrease fuel
     this.game.time.events.loop(Phaser.Timer.SECOND / 4, fuelManagement, this);
 };

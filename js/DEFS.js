@@ -103,7 +103,7 @@ window.g_game = {
             planet7: { x: 132, y: 162, key: 'planet3', scale: 1, type: 'planet' },
             asteroid3: { x: 129, y: 72, key: 'asteroid3', scale: 1, special: true, type: 'asteroid' },
             asteroid4: { x: 237, y: 113, key: 'asteroid1', scale: 1, special: true, type: 'asteroid' },
-            planet8: { x: 336, y: 164, key: 'planet3', scale: 1, type: 'planet' },
+            planet8: { x: 336, y: 164, key: 'planet3', scale: 1, type: 'planet', isGoal: true },
 
             asteroid5: { x: 600, y: 119, key: 'asteroid3', scale: 1, special: false, type: 'asteroid' },
             asteroid6: { x: 487, y: 246, key: 'asteroid1', scale: 1, special: false, type: 'asteroid' },

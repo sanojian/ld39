@@ -33,6 +33,9 @@ SplashScreen.prototype = {
 
         this.load.image('hook', 'assets/gfx/Hook.png');
 
+        this.load.image('win', 'assets/gfx/win.png');
+
+        this.load.image('storyScreen', 'assets/gfx/storyScreen.png');
 
         this.game.load.audio('engine', ['assets/audio/sfx/engine.wav']);
         this.game.load.audio('grappleExtend', ['assets/audio/sfx/grappleExtend.wav']);
@@ -53,16 +56,16 @@ SplashScreen.prototype = {
 
         g_game.splashBackground = this.game.add.image(0, 0, 'splashBackground');
 
-        console.log('waiting for space...');
-    },
+
+    
+   },
     update: function() {
         if (g_game.spaceKey.isDown) {
             g_game.splashBackground.visible = false;
-  
         }
-          if (this.cache.isSoundDecoded('ingame') && g_game.splashBackground.visible == false) {
-                this.game.state.start('game');
-            }
+        if (this.cache.isSoundDecoded('ingame') && g_game.splashBackground.visible == false) {
+            this.game.state.start('Story');
+        }
 
     }
 

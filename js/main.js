@@ -11,6 +11,7 @@ window.onload = function() {
     g_game.phaserGame.state.add('Boot', Boot);
 
     g_game.phaserGame.state.add('Transition', Transition);
+    g_game.phaserGame.state.add('Story', Story);
     g_game.phaserGame.state.add('Splash', SplashScreen);
     g_game.phaserGame.state.add('game', GameState);
 

@@ -76,6 +76,13 @@ GameState.prototype.update = function() {
         g_game.drawingSurface.moveTo(g_game.player.x, g_game.player.y);
         g_game.drawingSurface.lineTo(planet.x, planet.y);
 
+        for (i = 0; i < g_game.asteroids.length; i++) {
+            if (distanceBetween(g_game.player, g_game.asteroids[i]) < g_game.asteroids[i].width / 2) {
+                killPlayer();
+            }
+
+        }
+
     } else {
         // travelling
 
@@ -109,8 +116,10 @@ GameState.prototype.update = function() {
             makeOrbitable(this.game, g_game.planets, grappleLoc);
             makeOrbitable(this.game, g_game.specialAsteroids, grappleLoc);
 
-
+           if(g_game.player.customProps.grappleLength < 250){
             g_game.player.customProps.grappleLength += 4;
+
+}
         } else {
             g_game.hook.visible = false;
         }
