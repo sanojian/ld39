@@ -27,7 +27,7 @@ GameState.prototype.create = function() {
 
     enterOrbit(this.game, g_game.player, g_game.planets[0], true);
 
-    g_game.enemy = this.game.add.sprite(g_game.planets[g_game.planets.length-1].x, g_game.planets[g_game.planets.length-1].y - 32, 'ship2');
+    g_game.enemy = this.game.add.sprite(g_game.planets[g_game.planets.length-1].x, g_game.planets[g_game.planets.length-1].y - 24, 'ship2');
     g_game.enemy.anchor.setTo(0.5, 0.5);
     g_game.enemy.customProps = {};
 
@@ -85,11 +85,12 @@ function setupLevel(game) {
             planet.anchor.setTo(0.5, 0.5);
             planet.scale.setTo(planetDef.scale);
             planet.isGoal = planetDef.isGoal;
+            planet.isFuel = planetDef.isFuel;
             if (planet.isGoal) {
-                var flag = game.add.sprite(planetDef.x, planetDef.y - planet.height / 2, 'goal');
-                flag.anchor.setTo(0.5, 0.5);
+                //var flag = game.add.sprite(planetDef.x, planetDef.y - planet.height / 2, 'goal');
+                //flag.anchor.setTo(0.5, 0.5);
             }
-            else  {
+            else if (planet.isFuel) {
                 // TODO: check if fueling planet
                 //var pump = game.add.sprite(planetDef.x, planetDef.y - planet.height / 4, 'pump');
                 //pump.anchor.setTo(0.5, 0.5);
