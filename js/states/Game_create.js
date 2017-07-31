@@ -121,14 +121,18 @@ function fuelManagement() {
     }
     g_game.fuelBar.width = Math.floor(g_game.fuel / g_game.maxFuel * 94);
     if (g_game.fuel <= 0 && (g_game.player.customProps.state == 'travelNoGrapple' || g_game.player.customProps.state == 'travelGrapple')) {
-        if (g_game.player.customProps.velocityX > 0 && g_game.player.customProps.velocityY > 0) {
-            g_game.player.customProps.velocityX -= g_game.player.customProps.velocityX * 0.3;
-            g_game.player.customProps.velocityY -= g_game.player.customProps.velocityY * 0.3;
-        } else {
+        /*var vel = Math.sqrt(Math.pow(g_game.player.customProps.velocityX, 2) + Math.pow(g_game.player.customProps.velocityY, 2));
+        if (vel < 0.5) {
+          // drifting
+          g_game.player.customProps.velocityX -= 0.1 * Math.cos(g_game.player.rotation);
+          g_game.player.customProps.velocityY -= 0.1 * Math.sin(g_game.player.rotation);
+          g_game.sfx.engine.stop();
+          g_game.player.frame = 0;
+        } else {*/
             g_game.player.customProps.velocityX = 0;
             g_game.player.customProps.velocityY = 0;
             killPlayer();
-        }
+        //}
 
     }
 }
