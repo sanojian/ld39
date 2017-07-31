@@ -37,6 +37,7 @@ GameState.prototype.create = function() {
     initAudio('grappleExtend', this.game, 0.6, false);
     initAudio('grapple', this.game, 0.6, false);
     initAudio('explode', this.game, 1, false);
+    initAudio('fill', this.game, 0.6, false);
 
     var fuelBar = this.game.add.sprite(this.game.world.centerX - 5, this.game.world.height - 32, 'fuel');
     var fuelBarbg = this.game.add.sprite(this.game.world.centerX - 36, this.game.world.height - 32, 'fuel_bg');
@@ -69,7 +70,7 @@ GameState.prototype.create = function() {
 
 
     //decrease fuel
-    this.game.time.events.loop(Phaser.Timer.SECOND / 4, fuelManagement, this);
+    this.game.time.events.loop(Phaser.Timer.SECOND / 3, fuelManagement, this);
 };
 
 function setupLevel(game) {
@@ -117,11 +118,14 @@ function setupLevel(game) {
 
 function fuelManagement() {
     if (g_game.player.customProps.state == 'travelNoGrapple' && g_game.fuel > 0 || g_game.player.customProps.state == 'travelGrapple' && g_game.fuel > 0) {
-        g_game.fuel -= 8;
+        g_game.fuel -= 12;
     }
 
     if (g_game.player.customProps.state == 'orbitting' && g_game.player.customProps.orbitPlanet.isFuel) {
-        g_game.fuel = Math.min(g_game.maxFuel, g_game.fuel + 10);
+        if (g_game.fuel < g_game.maxFuel) {
+          g_game.sfx.fill.play();
+        }
+        g_game.fuel = Math.min(g_game.maxFuel, g_game.fuel + 16);
 
     }
     g_game.fuelBar.width = Math.floor(g_game.fuel / g_game.maxFuel * 94);
