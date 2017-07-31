@@ -11,7 +11,7 @@ window.g_game = {
     asteroids: [],
     specialAsteroids: [],
     editor: false,
-    currentlvl: 7,
+    currentlvl: 1,
     maxlvl: 9,
     levels: {
         //done
