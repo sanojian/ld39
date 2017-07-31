@@ -30,6 +30,7 @@ GameState.prototype.create = function() {
     initAudio('engine', this.game, 0.2, true);
     initAudio('grappleExtend', this.game, 0.6, false);
     initAudio('grapple', this.game, 0.6, false);
+    initAudio('explode', this.game, 1, false);
 
     var fuelBar = this.game.add.sprite(this.game.world.centerX - 5, this.game.world.height - 32, 'fuel');
     var fuelBarbg = this.game.add.sprite(this.game.world.centerX - 36, this.game.world.height - 32, 'fuel_bg');
@@ -47,6 +48,13 @@ GameState.prototype.create = function() {
     asteroidEmitter.minParticleSpeed.setTo(1, 1);
     asteroidEmitter.maxParticleSpeed.setTo(25, 25);
     g_game.asteroidEmitter = asteroidEmitter;
+
+    var crashEmitter = this.game.add.emitter(0, 0, 20);
+    crashEmitter.makeParticles(['rocketfrag1', 'rocketfrag2', 'rocketfrag3']);
+    crashEmitter.gravity = 0;
+    crashEmitter.minParticleSpeed.setTo(1, 1);
+    crashEmitter.maxParticleSpeed.setTo(25, 25);
+    g_game.crashEmitter = crashEmitter;
 
     var hook = this.game.add.sprite(g_game.player.x, g_game.player.y, 'hook');
     hook.anchor.setTo(0.5, 0.5);

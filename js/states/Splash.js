@@ -40,8 +40,9 @@ SplashScreen.prototype = {
         this.game.load.audio('engine', ['assets/audio/sfx/engine.wav']);
         this.game.load.audio('grappleExtend', ['assets/audio/sfx/grappleExtend.wav']);
         this.game.load.audio('grapple', ['assets/audio/sfx/grapple.wav']);
-        this.game.load.audio('ingame', ['assets/audio/music/ingame.mp3']);
+        this.game.load.audio('explode', ['assets/audio/sfx/explode.wav']);
         this.game.load.audio('applause', ['assets/audio/sfx/applause.wav']);
+        this.game.load.audio('ingame', ['assets/audio/music/ingame.mp3']);
 
 
 

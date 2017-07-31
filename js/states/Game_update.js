@@ -3,7 +3,9 @@ GameState.prototype.update = function() {
     var i;
 
     if (!g_game.player.alive) {
-        this.game.state.start('game');
+        //this.game.state.start('game');
+        g_game.sfx.engine.stop();
+        g_game.player.customProps.state = 'dead';
     }
 
 
@@ -83,7 +85,7 @@ GameState.prototype.update = function() {
 
         }
 
-    } else {
+    } else if (g_game.player.customProps.state !== 'dead') {
         // travelling
 
         g_game.player.x += g_game.player.customProps.velocityX;
@@ -137,8 +139,6 @@ function makeOrbitable(game, array, grappleLoc) {
             var angleShip = normalizeAngle(g_game.player.rotation);
             var angleToPlanet = Math.atan2(g_game.player.y - array[i].y, g_game.player.x - array[i].x);
             angleToPlanet = normalizeAngle(angleToPlanet);
-            console.log(angleShip);
-            console.log(angleToPlanet);
             var diffAngle = angleToPlanet - angleShip;
 
             g_game.player.customProps.orbitDirection = -1;

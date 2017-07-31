@@ -39,6 +39,13 @@ function normalizeAngle(angle) {
 }
 
 function killPlayer() {
+    g_game.crashEmitter.x = g_game.player.x;
+    g_game.crashEmitter.y = g_game.player.y;
+
+    g_game.crashEmitter.start(true, 12000, null, 25);
+
+    g_game.sfx.explode.play();
+    switchLevel(g_game.player.game, 'game');
     g_game.player.kill();
 }
 
@@ -55,10 +62,10 @@ function outOfOrbit() {
 
 }
 
-function switchLevel(game) {
+function switchLevel(game, stage) {
     game.time.events.add(Phaser.Timer.SECOND, function(){
-levelTransition(game);
-}, this);
+      game.state.start(stage || 'Transition');
+    }, this);
     g_game.planets = [];
     g_game.asteroids = [];
     g_game.specialAsteroids = [];
