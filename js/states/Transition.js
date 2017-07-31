@@ -2,7 +2,7 @@ var Transition = function(game) {};
 Transition.prototype = {
     create: function() {
 
-        if (g_game.currentlvl < 7) {
+        if (g_game.currentlvl < g_game.maxlvl) {
             var style = { font: "bold 16px 'Press Start 2P'", fill: "#DEEED6" };
             this.game.add.text(this.game.width/2, 128, g_game.levels[g_game.currentlvl].message.toUpperCase(), style).anchor.set(0.5, 0.5);
 
@@ -40,7 +40,7 @@ Transition.prototype = {
         g_game.applause.volume = 0.2;
     },
     update: function() {
-        if (g_game.currentlvl < 7) {
+        if (g_game.currentlvl < g_game.maxlvl) {
 
             g_game.transitionalPlayer.x += 3;
             g_game.transitionalPlayer2.x += g_game.transitionalPlayer2.speed;

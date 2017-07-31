@@ -11,7 +11,7 @@ window.g_game = {
     asteroids: [],
     specialAsteroids: [],
     editor: false,
-    currentlvl: 1,
+    currentlvl: 7,
     maxlvl: 9,
     levels: {
         //done
@@ -36,7 +36,7 @@ window.g_game = {
             planet1: { x: 66, y: 226, key: 'planet3', scale: 1, type: 'planet', isStart: true },
             planet2: { x: 578, y: 235, key: 'planet1', scale: 1, isGoal: true, type: 'planet' },
             asteroid1: { x: 324, y: 226, key: 'asteroid2', scale: 0.8, special: true, type: 'asteroid' },
-            message: 'Our princess is in another cas...\n I mean, on another planet!'
+            message: 'She is mine now, will you\nleave us in peace.'
 
         },
         //done
@@ -51,7 +51,7 @@ window.g_game = {
 					asteroid3:{x:240,y:72,key:'asteroid1',scale: 1.2, special:false,type:'asteroid' },
 					asteroid4:{x:432,y:168,key:'asteroid1',scale: 1.2, special:false,type:'asteroid' },
 					asteroid5:{x:480,y:144,key:'asteroid1',scale: 1.2, special:false,type:'asteroid' },
-          message: 'Good job \n BUT, SHE IS ON ANOTHER PLANET!'
+          message: 'Our princess is in another cas...\n I mean, on another planet!'
 
         },
         5: {
@@ -76,7 +76,7 @@ window.g_game = {
             asteroid16: { x: 420, y: 275, key: 'asteroid1', scale: 1, special: false, type: 'asteroid' },
             asteroid17: { x: 480, y: 350, key: 'asteroid1', scale: 1, special: false, type: 'asteroid' },
             asteroid18: { x: 560, y: 150, key: 'asteroid3', scale: 1, special: false, type: 'asteroid' },
-            message: 'Good job \n BUT, SHE IS ON ANOTHER PLANET!'
+            message: 'I thought I had you there.\nNext time you wont be so lucky'
         },
 				6: {
             planet1: { x: 89, y: 381, key: 'planet1', scale: 1, type: 'planet' },
@@ -87,7 +87,7 @@ window.g_game = {
             asteroid2: { x: 227, y: 252, key: 'asteroid1', scale: 1, special: false, type: 'asteroid' },
             asteroid3: { x: 257, y: 272, key: 'asteroid1', scale: 1, special: false, type: 'asteroid' },
             asteroid4: { x: 277, y: 292, key: 'asteroid1', scale: 1, special: false, type: 'asteroid' },
-            message: 'Good job \n BUT, SHE IS ON ANOTHER PLANET!'
+            message: 'You wont be laughing when\nyou look at the gas prices.'
 
         },
 
@@ -95,12 +95,12 @@ window.g_game = {
         7: {
             planet1: { x: 534, y: 76, key: 'planet2', scale: 1, type: 'planet', isStart: true },
             planet2: { x: 535, y: 192, key: 'planet3', scale: 1, type: 'planet' },
-            planet3: { x: 535, y: 300, key: 'planet1', scale: 1, type: 'planet' },
+            planet3: { x: 535, y: 300, key: 'planet1', scale: 1, isFuel: true, type: 'planet' },
             asteroid1: { x: 481, y: 375, key: 'asteroid2', scale: 1, special: true, type: 'asteroid' },
             planet4: { x: 348, y: 345, key: 'planet4', scale: 1, type: 'planet' },
             asteroid2: { x: 273, y: 384, key: 'asteroid2', scale: 1, special: true, type: 'asteroid' },
             planet5: { x: 187, y: 410, key: 'planet2', scale: 1, type: 'planet' },
-            planet6: { x: 94, y: 283, key: 'planet1', scale: 1, type: 'planet' },
+            planet6: { x: 94, y: 283, key: 'planet1', scale: 1, isFuel: true, type: 'planet' },
             planet7: { x: 132, y: 162, key: 'planet3', scale: 1, type: 'planet' },
             asteroid3: { x: 129, y: 72, key: 'asteroid3', scale: 1, special: true, type: 'asteroid' },
             asteroid4: { x: 237, y: 113, key: 'asteroid1', scale: 1, special: true, type: 'asteroid' },
@@ -140,7 +140,7 @@ window.g_game = {
             asteroid36: { x: 250, y: 180, key: 'asteroid3', scale: 1, special: false, type: 'asteroid' },
             asteroid37: { x: 250, y: 160, key: 'asteroid1', scale: 1, special: false, type: 'asteroid' },
             asteroid38: { x: 250, y: 140, key: 'asteroid3', scale: 1, special: false, type: 'asteroid' },
-
+						message: 'How did you get through\nthat.'
 
         },
 
@@ -212,7 +212,7 @@ window.g_game = {
 
             asteroid62: { x: 528, y: 192, key: 'asteroid1', scale: 1.2, special: true, type: 'asteroid' },
             asteroid63: { x: 408, y: 288, key: 'asteroid1', scale: 1.2, special: true, type: 'asteroid' },
-
+						message: 'I dont have many places\nleft to hide from you'
         },
 
         9: {
