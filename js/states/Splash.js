@@ -53,6 +53,10 @@ SplashScreen.prototype = {
         this.load.spritesheet('ship1', 'assets/gfx/ship1.png', 16, 9);
         this.load.spritesheet('ship2', 'assets/gfx/shipEnemy.png', 16, 9);
 
+
+        this.load.image('editor', 'assets/gfx/editor.png');
+
+
     },
     create: function() {
         g_game.spaceKey = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
@@ -61,13 +65,18 @@ SplashScreen.prototype = {
 
 
 
-   },
+    },
     update: function() {
         if (g_game.spaceKey.isDown) {
             g_game.splashBackground.visible = false;
         }
         if (this.cache.isSoundDecoded('ingame') && g_game.splashBackground.visible == false) {
-            this.game.state.start('Story');
+            if (!g_game.editor) {
+                this.game.state.start('Story');
+
+            } else {
+                this.game.state.start('Editor');
+            }
         }
 
     }

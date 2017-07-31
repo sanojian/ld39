@@ -10,7 +10,8 @@ window.g_game = {
     planets: [],
     asteroids: [],
     specialAsteroids: [],
-    currentlvl: 1,
+    editor: true,
+    currentlvl: 6,
     levels: {
         //done
         1: {
@@ -82,14 +83,18 @@ window.g_game = {
             message: 'Good job \n BUT, SHE IS ON ANOTHER PLANET!'
         },
         6: {
-            planet1: { x: 89, y: 381, key: 'planet1', scale: 1, type: 'planet' },
-            planet2: { x: 363, y: 232, key: 'planet2', scale: 1, isFuel: true, type: 'planet' },
-            planet3: { x: 156, y: 167, key: 'planet4', scale: 1, type: 'planet' },
-            planet4: { x: 508, y: 91, key: 'planet3', scale: 1, type: 'planet' , isGoal: true},
-            asteroid1: { x: 190, y: 262, key: 'asteroid1', scale: 1, special: false, type: 'asteroid' },
-            asteroid2: { x: 227, y: 252, key: 'asteroid1', scale: 1, special: false, type: 'asteroid' },
-            asteroid3: { x: 257, y: 272, key: 'asteroid1', scale: 1, special: false, type: 'asteroid' },
-            asteroid4: { x: 277, y: 292, key: 'asteroid1', scale: 1, special: false, type: 'asteroid' },
+            planet1: { x: 100, y: 128, key: 'planet1', scale: 1, type: 'planet' },
+            planet2: { x: 450, y: 128, key: 'planet1', scale: 1, type: 'planet' },
+            asteroid1: { x: 184, y: 60, key: 'asteroid1', scale: 1, special: false, type: 'asteroid' },
+            asteroid2: { x: 195, y: 75, key: 'asteroid1', scale: 1, special: false, type: 'asteroid' },
+            asteroid3: { x: 206, y: 90, key: 'asteroid1', scale: 1, special: false, type: 'asteroid' },
+            asteroid4: { x: 215, y: 105, key: 'asteroid1', scale: 1, special: false, type: 'asteroid' },
+            asteroid5: { x: 224, y: 120, key: 'asteroid1', scale: 1, special: false, type: 'asteroid' },
+            asteroid6: { x: 235, y: 135, key: 'asteroid1', scale: 1, special: false, type: 'asteroid' },
+            asteroid7: { x: 245, y: 150, key: 'asteroid1', scale: 1, special: false, type: 'asteroid' },
+            asteroid8: { x: 256, y: 165, key: 'asteroid1', scale: 1, special: false, type: 'asteroid' },
+            asteroid9: { x: 266, y: 181, key: 'asteroid1', scale: 1, special: false, type: 'asteroid' },
+            asteroid10: { x: 265, y: 253, key: 'asteroid1', scale: 1, special: false, type: 'asteroid' },
             message: 'Good job \n BUT, SHE IS ON ANOTHER PLANET!'
 
         },
