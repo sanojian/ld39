@@ -37,6 +37,10 @@ Editor.prototype = {
 
             updateMarker(this.game);
         }, this);
+        this.game.input.onDown.add(function() {
+
+            placeTile(this.game);
+        }, this);
 
     },
     update: function() {
@@ -98,7 +102,11 @@ function updateMarker(game) {
 
     g_game.marker.x = g_game.layer.getTileX(game.input.activePointer.worldX) * 24;
     g_game.marker.y = g_game.layer.getTileY(game.input.activePointer.worldY) * 24;
-    if (game.input.activePointer.y < game.height - 32) {
+  
+}
+
+function placeTile(game){
+  if (game.input.activePointer.y < game.height - 32) {
         if (game.input.mousePointer.isDown && g_game.marker.y > 24 && g_game.currentTile == 'asteroid') {
             g_game.edasteroidsindex += 1;
             g_game.sandbox.putTile(g_game.currentTileIndex, g_game.layer.getTileX(g_game.marker.x), g_game.layer.getTileY(g_game.marker.y), g_game.layer);
