@@ -11,6 +11,10 @@ Story.prototype = {
         storyScreen.width = this.game.width;
         storyScreen.height = this.game.height;
 
+        var song = this.game.add.audio('ingame');
+        if (!song.isPlaying) {
+            song.loopFull(0.6);
+        }
 
     },
     update: function() {
