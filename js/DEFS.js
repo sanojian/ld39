@@ -10,7 +10,7 @@ window.g_game = {
     planets: [],
     asteroids: [],
     specialAsteroids: [],
-    editor: true,
+    editor: false,
     currentlvl: 1,
     maxlvl: 9,
     levels: {
@@ -41,11 +41,17 @@ window.g_game = {
         },
         //done
         4: {
-            planet1: { x: 66, y: 226, key: 'planet1', scale: 1, type: 'planet', isStart: true },
-            planet2: { x: 578, y: 235, key: 'planet3', scale: 1, isGoal: true, type: 'planet' },
-            asteroid1: { x: 324, y: 324, key: 'asteroid2', scale: 0.8, special: true, type: 'asteroid' },
-            asteroid2: { x: 324, y: 226, key: 'asteroid1', scale: 2, type: 'asteroid' },
-            message: 'Good job \n BUT, SHE IS ON ANOTHER PLANET!'
+					planet1:{x:96,y:360,key:'planet1',scale: 1, type:'planet'},
+					planet2:{x:288,y:216,key:'planet2',scale: 1,type:'planet'},
+					planet3:{x:144,y:120,key:'planet4',scale: 1, isFuel:true,type:'planet'},
+					planet4:{x:336,y:96,key:'planet3',scale: 1, isFuel:true,type:'planet'},
+					planet5:{x:480,y:48,key:'planet4',scale: 1, isGoal: true, type:'planet'},
+					asteroid1:{x:264,y:312,key:'asteroid1',scale: 1.2, special:false,type:'asteroid' },
+					asteroid2:{x:312,y:360,key:'asteroid1',scale: 1.2, special:false,type:'asteroid' },
+					asteroid3:{x:240,y:72,key:'asteroid1',scale: 1.2, special:false,type:'asteroid' },
+					asteroid4:{x:432,y:168,key:'asteroid1',scale: 1.2, special:false,type:'asteroid' },
+					asteroid5:{x:480,y:144,key:'asteroid1',scale: 1.2, special:false,type:'asteroid' },
+          message: 'Good job \n BUT, SHE IS ON ANOTHER PLANET!'
 
         },
         5: {
