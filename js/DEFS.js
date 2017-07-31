@@ -10,8 +10,8 @@ window.g_game = {
     planets: [],
     asteroids: [],
     specialAsteroids: [],
-    editor: false,
-    currentlvl: 9,
+    editor: true,
+    currentlvl: 6,
     maxlvl: 9,
     levels: {
         //done
@@ -85,7 +85,7 @@ window.g_game = {
         },
         6: {
             planet1: { x: 100, y: 128, key: 'planet1', scale: 1, type: 'planet', isStart: true },
-            planet2: { x: 450, y: 128, key: 'planet1', scale: 1, type: 'planet' },
+            planet2: { x: 450, y: 128, key: 'planet1', scale: 1, type: 'planet' , isGoal:true },
             asteroid1: { x: 184, y: 60, key: 'asteroid1', scale: 1, special: false, type: 'asteroid' },
             asteroid2: { x: 195, y: 75, key: 'asteroid1', scale: 1, special: false, type: 'asteroid' },
             asteroid3: { x: 206, y: 90, key: 'asteroid1', scale: 1, special: false, type: 'asteroid' },
