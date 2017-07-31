@@ -67,7 +67,7 @@ GameState.prototype.create = function() {
     hook.visible = false;
     g_game.hook = hook;
 
-   
+
     //decrease fuel
     this.game.time.events.loop(Phaser.Timer.SECOND / 4, fuelManagement, this);
 };
@@ -105,6 +105,7 @@ function setupLevel(game) {
                 g_game.asteroids.push(asteroid);
             } else {
                 addAura(asteroid);
+                asteroid.isFuel = true;
                 g_game.specialAsteroids.push(asteroid);
             }
         }

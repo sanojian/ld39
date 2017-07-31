@@ -10,7 +10,7 @@ window.g_game = {
     planets: [],
     asteroids: [],
     specialAsteroids: [],
-    currentlvl: 2,
+    currentlvl: 1,
     levels: {
         //done
         1: {
@@ -34,7 +34,7 @@ window.g_game = {
             planet1: { x: 66, y: 226, key: 'planet3', scale: 1, type: 'planet' },
             planet2: { x: 578, y: 235, key: 'planet1', scale: 1, isGoal: true, type: 'planet' },
             asteroid1: { x: 324, y: 226, key: 'asteroid2', scale: 0.8, special: true, type: 'asteroid' },
-            message: 'Good job \n BUT, SHE IS ON ANOTHER PLANET!'
+            message: 'Our princess is in another cas...\n I mean, she is on another planet!'
 
         },
         //done
@@ -82,11 +82,14 @@ window.g_game = {
             message: 'Good job \n BUT, SHE IS ON ANOTHER PLANET!'
         },
         6: {
-            planet1: { x: 299, y: 381, key: 'planet1', scale: 1, type: 'planet' },
-            planet2: { x: 463, y: 232, key: 'planet2', scale: 1, type: 'planet' },
-            planet3: { x: 308, y: 91, key: 'planet3', scale: 1, type: 'planet' , isGoal: true},
-            asteroid1: { x: 307, y: 232, key: 'asteroid1', scale: 1, special: false, type: 'asteroid' },
-            planet4: { x: 156, y: 227, key: 'planet4', scale: 1, type: 'planet' },
+            planet1: { x: 89, y: 381, key: 'planet1', scale: 1, type: 'planet' },
+            planet2: { x: 363, y: 232, key: 'planet2', scale: 1, isFuel: true, type: 'planet' },
+            planet3: { x: 156, y: 167, key: 'planet4', scale: 1, type: 'planet' },
+            planet4: { x: 508, y: 91, key: 'planet3', scale: 1, type: 'planet' , isGoal: true},
+            asteroid1: { x: 190, y: 262, key: 'asteroid1', scale: 1, special: false, type: 'asteroid' },
+            asteroid2: { x: 227, y: 252, key: 'asteroid1', scale: 1, special: false, type: 'asteroid' },
+            asteroid3: { x: 257, y: 272, key: 'asteroid1', scale: 1, special: false, type: 'asteroid' },
+            asteroid4: { x: 277, y: 292, key: 'asteroid1', scale: 1, special: false, type: 'asteroid' },
             message: 'Good job \n BUT, SHE IS ON ANOTHER PLANET!'
 
         },
