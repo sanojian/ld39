@@ -19,7 +19,7 @@ Story.prototype = {
     },
     update: function() {
         if (g_game.spaceKey.isDown) {
-            this.game.state.start('Transition');
+            this.game.state.start('game');
 
         }
 

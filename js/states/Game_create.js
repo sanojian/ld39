@@ -14,24 +14,28 @@ GameState.prototype.create = function() {
     // graphics drawing surface
     g_game.drawingSurface = this.game.add.graphics(0, 0);
 
-    var player = this.game.add.sprite(g_game.planets[0].x, g_game.planets[0].y - 32, 'ship1');
+    var spawnPlanet = getSpawnPlanet();
+
+    var player = this.game.add.sprite(spawnPlanet.x, spawnPlanet.y - 32, 'ship1');
     player.anchor.setTo(0.5, 0.5);
     player.customProps = {
         orbitAngle: 0,
-        orbitPlanet: g_game.planets[0],
+        orbitPlanet: spawnPlanet,
         grappleLength: 32,
     };
     player.checkWorldBounds = true;
     player.events.onOutOfBounds.add(killPlayer, this);
     g_game.player = player;
 
-    enterOrbit(this.game, g_game.player, g_game.planets[0], true);
+    enterOrbit(this.game, g_game.player, spawnPlanet, true);
 
-    g_game.enemy = this.game.add.sprite(g_game.planets[g_game.planets.length-1].x, g_game.planets[g_game.planets.length-1].y - 24, 'ship2');
+    var goalPlanet = getGoalPlanet();
+
+    g_game.enemy = this.game.add.sprite(goalPlanet.x, goalPlanet.y - 24, 'ship2');
     g_game.enemy.anchor.setTo(0.5, 0.5);
     g_game.enemy.customProps = {};
 
-    enterOrbit(this.game, g_game.enemy, g_game.planets[g_game.planets.length-1], true);
+    enterOrbit(this.game, g_game.enemy, goalPlanet, true);
 
     initAudio('engine', this.game, 0.2, true);
     initAudio('grappleExtend', this.game, 0.6, false);
@@ -84,6 +88,7 @@ function setupLevel(game) {
             planet.scale.setTo(planetDef.scale);
             planet.isGoal = planetDef.isGoal;
             planet.isFuel = planetDef.isFuel;
+            planet.isSpawn = i == 'planet1';
             if (planet.isGoal) {
                 //var flag = game.add.sprite(planetDef.x, planetDef.y - planet.height / 2, 'goal');
                 //flag.anchor.setTo(0.5, 0.5);

@@ -16,13 +16,10 @@ function enterOrbit(game, obj, planet, skipSound) {
       g_game.sfx.grapple.play();
     }
 
-    if (obj == g_game.player) {
-      for (var i = 0; i < g_game.planets.length; i++) {
-          if (g_game.planets[i] == planet && g_game.planets[i].isGoal) {
-              switchLevel(game);
-          }
-      }
+    if (obj == g_game.player && planet.isGoal) {
+      return switchLevel(game);
     }
+
     for (var j = 0; j < g_game.specialAsteroids.length; j++) {
         if (g_game.specialAsteroids[j] == planet) {
             game.time.events.add(Phaser.Timer.SECOND * 2, outOfOrbit, this);
@@ -73,5 +70,20 @@ function switchLevel(game, stage) {
     g_game.asteroids = [];
     g_game.specialAsteroids = [];
    // game.state.start(game.state.current);
+}
 
+function getSpawnPlanet() {
+  for (var i=0; i<g_game.planets.length; i++) {
+    if (g_game.planets[i].isSpawn) {
+      return g_game.planets[i];
+    }
+  }
+}
+
+function getGoalPlanet() {
+  for (var i=0; i<g_game.planets.length; i++) {
+    if (g_game.planets[i].isGoal) {
+      return g_game.planets[i];
+    }
+  }
 }
