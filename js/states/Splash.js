@@ -40,7 +40,7 @@ SplashScreen.prototype = {
         this.game.load.audio('engine', ['assets/audio/sfx/engine.wav']);
         this.game.load.audio('grappleExtend', ['assets/audio/sfx/grappleExtend.wav']);
         this.game.load.audio('grapple', ['assets/audio/sfx/grapple.wav']);
-        this.game.load.audio('ingame', ['assets/audio/sfx/ingame.mp3']);
+        this.game.load.audio('ingame', ['assets/audio/music/ingame.mp3']);
         this.game.load.audio('applause', ['assets/audio/sfx/applause.wav']);
 
 
@@ -57,7 +57,7 @@ SplashScreen.prototype = {
         g_game.splashBackground = this.game.add.image(0, 0, 'splashBackground');
 
 
-    
+
    },
     update: function() {
         if (g_game.spaceKey.isDown) {
