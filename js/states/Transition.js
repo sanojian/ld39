@@ -4,7 +4,7 @@ Transition.prototype = {
 
         if (g_game.currentlvl < g_game.maxlvl) {
             var style = { font: "bold 16px 'Press Start 2P'", fill: "#DEEED6" };
-            this.game.add.text(this.game.width/2, 128, g_game.levels[g_game.currentlvl].message.toUpperCase(), style).anchor.set(0.5, 0.5);
+            this.game.add.text(this.game.width / 2, 128, g_game.levels[g_game.currentlvl].message.toUpperCase(), style).anchor.set(0.5, 0.5);
 
 
             //var transitionText = this.game.add.bitmapText(this.game.world.centerX, 128, 'font', g_game.levels[g_game.currentlvl].message, 32);
@@ -22,19 +22,27 @@ Transition.prototype = {
 
         } else {
 
+
+            // var romanticimageaww = this.game.add.sprite(0, 0, 'win');
+            // romanticimageaww.width = this.game.width;
+            // romanticimageaww.height = this.game.height;
+
+            // g_game.youdidit = this.game.add.bitmapText(this.game.world.centerX, -64, 'font', 'YOU DID IT!', 32);
+            // g_game.youdidit.anchor.setTo(0.5, 0.5);
+
+
             var romanticimageaww = this.game.add.sprite(0, 0, 'win');
+            romanticimageaww.alpha = 0;
             romanticimageaww.width = this.game.width;
             romanticimageaww.height = this.game.height;
 
-
-            g_game.youdidit = this.game.add.bitmapText(this.game.world.centerX, -64, 'font', 'YOU DID IT!', 32);
+            g_game.youdidit = this.game.add.bitmapText(this.game.world.centerX, -256, 'font', 'Programming:\n WiLD\n sanojian \n Art: \n bunp \n Music: \n www.soundimage.org \n\n Thanks for playing!', 32);
             g_game.youdidit.anchor.setTo(0.5, 0.5);
+            this.game.add.tween(romanticimageaww).to({ alpha: 1 }, 1500, Phaser.Easing.Linear.None, true);
 
 
 
         }
-
-
         g_game.applause = this.game.add.audio('applause');
         g_game.applause.play();
         g_game.applause.volume = 0.2;
@@ -50,15 +58,17 @@ Transition.prototype = {
                 goToLevel(this.game, g_game.currentlvl + 1);
                 g_game.applause.stop();
             }
-        }else{
+        } else {
 
-        if (g_game.youdidit.y < 128) {
-            g_game.youdidit.y += 1;
+            if (g_game.youdidit) {
+                if (g_game.youdidit.y < 250) {
+                    g_game.youdidit.y += 1;
+                }
+
+            }
         }
 
     }
-
-}
 };
 
 function goToLevel(game, level) {
