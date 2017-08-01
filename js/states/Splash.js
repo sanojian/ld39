@@ -32,7 +32,7 @@ SplashScreen.prototype = {
         this.load.image('fuel_bg', 'assets/gfx/fuel_bg.png');
         this.load.image('fuel', 'assets/gfx/fuel.png');
 
-        this.load.image('hook', 'assets/gfx/Hook.png');
+        this.load.image('hook', 'assets/gfx/hook.png');
 
         this.load.image('win', 'assets/gfx/win.png');
 
